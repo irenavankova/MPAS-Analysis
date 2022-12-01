@@ -129,7 +129,7 @@ def _get_projection_comparison_descriptor(config, comparison_grid_name):
                        'north_atlantic': 'NorthAtlantic',
                        'north_pacific': 'NorthPacific',
                        'subpolar_north_atlantic': 'SubpolarNorthAtlantic',
-		       'fris': 'Fris'}
+               'fris': 'Fris'}
 
     grid_suffixes = {'antarctic': 'Antarctic_stereo',
                      'arctic': 'Arctic_stereo',
@@ -138,7 +138,7 @@ def _get_projection_comparison_descriptor(config, comparison_grid_name):
                      'north_atlantic': 'North_Atlantic',
                      'north_pacific': 'North_Pacific',
                      'subpolar_north_atlantic': 'Subpolar_North_Atlantic',
-		     'fris': 'fris'}
+             'fris': 'fris'}
 
     if comparison_grid_name not in option_suffixes:
         raise ValueError(f'{comparison_grid_name} is not one of the supported '
@@ -153,12 +153,12 @@ def _get_projection_comparison_descriptor(config, comparison_grid_name):
     option = f'comparison{option_suffix}Bounds'    
     if config.has_option(section, option):
         #height = config.getfloat(section, option)
-	bounds = config.getexpression(section, option)
+    bounds = config.getexpression(section, option)
         # convert from km to m
         bounds = [1e3 * bound for bound in bounds]
     else:
         #height = width
-	    # get width and height as before
+        # get width and height as before
         width = config.getfloat(
             section, f'comparison{option_suffix}Width')
         option = f'comparison{option_suffix}Height'
