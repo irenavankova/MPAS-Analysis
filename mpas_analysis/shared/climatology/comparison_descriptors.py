@@ -162,6 +162,8 @@ def _get_projection_comparison_descriptor(config, comparison_grid_name):
         xmax = 0.5 * width * 1e3
         ymax = 0.5 * height * 1e3
         bounds = [-xmax, xmax, -ymax, ymax]
+    width = bounds[1] - bounds[0]
+    height = bounds[3] - bounds[2]
     res = config.getfloat(
         section, f'comparison{option_suffix}Resolution')
 
