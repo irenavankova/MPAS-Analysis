@@ -1,0 +1,72 @@
+Detected E3SM supported machine: chicoma-cpu
+Using the following config files:
+   /users/vankova/mpas-analysis/fris_map2/mpas_analysis/default.cfg
+   /users/vankova/miniconda3/envs/mpas_dev/lib/python3.11/site-packages/mache/machines/chicoma-cpu.cfg
+   /users/vankova/mpas-analysis/fris_map2/mpas_analysis/configuration/chicoma-cpu.cfg
+   /users/vankova/mpas-analysis/fris_map2/mpas_analysis/__main__.py
+   /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/fris_map2_03_chic_test_11_20.cfg
+copying /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/fris_map2_03_chic_test_11_20.cfg to HTML dir.
+
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp5dbxwp_k/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp5dbxwp_k/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_SOwISC12to60E2r4_vertices_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc corner --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp50fp28ck/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp50fp28ck/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_SOwISC12to60E2r4_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc center --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpt6b1uhtq/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpt6b1uhtq/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_thetaSOSE_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp3q1jww8d/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp3q1jww8d/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_salinitySOSE_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpown5xg6d/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpown5xg6d/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_mldSOSE_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp0nefiyvc/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmp0nefiyvc/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_temperatureSchmidtko_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpangw03j0/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpangw03j0/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_salinitySchmidtko_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmptvbrok2e/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmptvbrok2e/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_potentialDensitySchmidtko_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpagib6dpo/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/tmpagib6dpo/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/mapping/map_obs_meltRate_6000.0x6000.0km_10.0km_Antarctic_stereo_to_1400.0x1400.0km_10.0km_Fris_bilinear.nc --method bilinear --netcdf4 --no_log --src_regional --dst_regional --ignore_unmapped
+Running tasks:   0% |                                          | ETA:  --:--:--
+
+Running tasks:   2% |#                                         | ETA:   0:00:03
+Running tasks:  15% |######                                    | ETA:   0:00:03
+Running tasks:  21% |########                                  | ETA:   0:00:03
+Running tasks:  23% |#########                                 | ETA:   0:00:02
+Running tasks:  26% |###########                               | ETA:   0:00:02
+Running tasks:  28% |############                              | ETA:   0:00:03
+Running tasks:  31% |#############                             | ETA:   0:00:02
+Running tasks:  31% |#############                             | ETA:   0:00:03
+Running tasks:  31% |#############                             | ETA:   0:00:03
+Running tasks:  31% |#############                             | ETA:   0:00:03
+Running tasks:  34% |##############                            | ETA:   0:03:29
+Running tasks:  36% |###############                           | ETA:   0:03:08
+Running tasks:  39% |################                          | ETA:   0:02:54
+Running tasks:  44% |##################                        | ETA:   0:02:21
+Running tasks:  47% |###################                       | ETA:   0:02:08
+Running tasks:  55% |#######################                   | ETA:   0:01:34
+Running tasks:  57% |########################                  | ETA:   0:01:25
+Running tasks:  57% |########################                  | ETA:   0:01:25
+Running tasks:  71% |#############################             | ETA:   0:00:47
+Running tasks:  73% |##############################            | ETA:   0:00:42
+Running tasks:  73% |##############################            | ETA:   0:00:42
+Running tasks:  73% |##############################            | ETA:   0:00:42
+Running tasks:  73% |##############################            | ETA:   0:00:42
+Running tasks:  73% |##############################            | ETA:   0:00:42
+Running tasks:  73% |##############################            | ETA:   0:00:42
+Running tasks:  73% |##############################            | ETA:   0:00:43
+Running tasks:  78% |#################################         | ETA:   0:00:38
+Running tasks:  78% |#################################         | ETA:   0:00:38
+Running tasks:  81% |##################################        | ETA:   0:00:33
+Running tasks:  84% |###################################       | ETA:   0:00:28
+Running tasks:  86% |####################################      | ETA:   0:00:22
+Running tasks:  89% |#####################################     | ETA:   0:00:18
+Running tasks:  92% |######################################    | ETA:   0:00:13
+Running tasks:  94% |#######################################   | ETA:   0:00:11
+Running tasks:  97% |########################################  | ETA:   0:00:05
+Running tasks: 100% |##########################################| ETA:  00:00:00
+Running tasks: 100% |##########################################| Time:  0:03:32
+
+Log files for executed tasks can be found in /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_11_20_fris_map2_03/clim_11-20_ts_11-20/logs
+Total setup time: 0:02:08.52
+Total run time: 0:05:41.11
+Generating webpage for viewing results...
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev/bin/mpas_analysis", line 33, in <module>
+    sys.exit(load_entry_point('mpas-analysis', 'console_scripts', 'mpas_analysis')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/fris_map2/mpas_analysis/__main__.py", line 1025, in main
+    generate_html(config, analyses, control_config, custom_config_files)
+  File "/users/vankova/mpas-analysis/fris_map2/mpas_analysis/shared/html/pages.py", line 92, in generate_html
+    if html_dir.startswith(base_path):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: startswith first arg must be str or a tuple of str, not NoneType

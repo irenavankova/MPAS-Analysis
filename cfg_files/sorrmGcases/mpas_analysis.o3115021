@@ -1,0 +1,1300 @@
+Detected E3SM supported machine: chicoma-cpu
+Using the following config files:
+   /users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/default.cfg
+   /users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/mache/machines/chicoma-cpu.cfg
+   /users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/configuration/chicoma-cpu.cfg
+   /users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py
+   /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/chic_e3sm_test_00.cfg
+copying /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/chic_e3sm_test_00.cfg to HTML dir.
+
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmp8zjloiof/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmp8zjloiof/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_to_0.5x0.5degree_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc center --src_regional --ignore_unmapped
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/MLD/holtetalley_mld_climatology_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '9294ce58-1ed0-4f49-a00b-e971c49d473f']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_mld.py", line 192, in get_observation_descriptor
+    dsObs = self.build_observational_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_mld.py", line 222, in build_observational_dataset
+    dsObs = xr.open_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/MLD/holtetalley_mld_climatology_20180710.nc'
+Warning: climatologyMapMLD: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapMLD failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SST/MODEL.SST.HAD187001-198110.OI198111-201203_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'c44d77b1-2f83-4293-ae41-45b29acbf4bd']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_sst.py", line 184, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SST/MODEL.SST.HAD187001-198110.OI198111-201203_20180710.nc'
+Warning: climatologyMapSST: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapSST failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SSS/Aquarius_V3_SSS_Monthly_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'c81d74c9-864b-4d16-b925-a43755d007e4']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_sss.py", line 175, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SSS/Aquarius_V3_SSS_Monthly_20180710.nc'
+Warning: climatologyMapSSS: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapSSS failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SSH/zos_AVISO_L4_199210-201012_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '60aa86c7-e3d0-46ce-9b75-670dba37bba4']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_ssh.py", line 216, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SSH/zos_AVISO_L4_199210-201012_20180710.nc'
+Warning: climatologyMapSSH: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapSSH failed during check, so this task will not be run
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmpn9cit9p4/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmpn9cit9p4/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_to_7000.0x4000.0km_20.0km_Subpolar_North_Atlantic_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc center --src_regional --dst_regional --ignore_unmapped
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/EKE/drifter_variance_20180804.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '9df8adf2-1654-4b35-9515-e0f6c09e8008']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_eke.py", line 242, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/EKE/drifter_variance_20180804.nc'
+Warning: climatologyMapEKE: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapEKE failed during check, so this task will not be run
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmp6sghtw8e/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmp6sghtw8e/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_vertices_to_0.5x0.5degree_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc corner --src_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmptd0i7vqt/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmptd0i7vqt/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_vertices_to_7000.0x4000.0km_20.0km_Subpolar_North_Atlantic_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc corner --src_regional --dst_regional --ignore_unmapped
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmpa2pht03e/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmpa2pht03e/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_to_6000.0x6000.0km_10.0km_Antarctic_stereo_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc center --src_regional --dst_regional --ignore_unmapped
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SOSE/SOSE_2005-2010_monthly_pot_temp_6000.0x6000.0km_10.0km_Antarctic_stereo_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '3ced68c7-46a5-423b-80d4-3fb257e06187']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/remap_sose_climatology.py", line 116, in get_observation_descriptor
+    obsDescriptor = ProjectionGridDescriptor.read(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 777, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SOSE/SOSE_2005-2010_monthly_pot_temp_6000.0x6000.0km_10.0km_Antarctic_stereo_20180710.nc'
+Warning: climatologyMapSose: remapObservationsTemperature failed during check and will not be run
+Warning: subtask of climatologyMapSose failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/WOA18/woa18_decav_04_TS_ann_20190829.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'e5c909ea-2c8c-45a3-965d-ccd42d5ddb7d']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_woa.py", line 338, in get_observation_descriptor
+    dsObs = self.build_observational_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_woa.py", line 368, in build_observational_dataset
+    dsObs = xr.open_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/WOA18/woa18_decav_04_TS_ann_20190829.nc'
+Warning: climatologyMapWoa: remapObservationsAnn failed during check and will not be run
+Warning: subtask of climatologyMapWoa failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/ARGO/ArgoClimatology_TS_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '45557a74-1d4d-43f6-853b-186e1ee6b5fb']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_argo.py", line 392, in get_observation_descriptor
+    dsObs = self.build_observational_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_argo.py", line 422, in build_observational_dataset
+    dsObs = xr.open_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/ARGO/ArgoClimatology_TS_20180710.nc'
+Warning: climatologyMapArgoTemperature: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapArgoTemperature failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/ARGO/ArgoClimatology_TS_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'b9f556fd-49aa-4776-87b6-07f8dc63db3c']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_argo.py", line 392, in get_observation_descriptor
+    dsObs = self.build_observational_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_argo.py", line 422, in build_observational_dataset
+    dsObs = xr.open_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/ARGO/ArgoClimatology_TS_20180710.nc'
+Warning: climatologyMapArgoSalinity: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapArgoSalinity failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/Schmidtko/Schmidtko_et_al_2014_bottom_PT_S_PD_6000.0x6000.0km_10.0km_Antarctic_stereo.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '06956b6d-8de9-492a-9b89-ffdc76ae5316']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_schmidtko.py", line 261, in get_observation_descriptor
+    obsDescriptor = ProjectionGridDescriptor.read(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 777, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/Schmidtko/Schmidtko_et_al_2014_bottom_PT_S_PD_6000.0x6000.0km_10.0km_Antarctic_stereo.nc'
+Warning: climatologyMapSchmidtko: remapObservationsTemperature failed during check and will not be run
+Warning: subtask of climatologyMapSchmidtko failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/Melt/Rignot_2013_melt_rates_6000.0x6000.0km_10.0km_Antarctic_stereo.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '20ec3385-e9a1-409f-8c49-78383503ef2d']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/climatology_map_antarctic_melt.py", line 288, in get_observation_descriptor
+    obsDescriptor = ProjectionGridDescriptor.read(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 777, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/Melt/Rignot_2013_melt_rates_6000.0x6000.0km_10.0km_Antarctic_stereo.nc'
+Warning: climatologyMapAntarcticMelt: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapAntarcticMelt failed during check, so this task will not be run
+Warning: No MHT observations file found: skip plotting obs
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/WOCE/WOCE_A21_Drake_Passage_20181126.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'a1bdf0a8-a535-4aa8-95d2-82720ffcc23c']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/compute_transects_subtask.py", line 189, in setup_and_check
+    obsDatasets = self.obsDatasets.get_observations()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/compute_transects_subtask.py", line 660, in get_observations
+    dsObs = self.build_observational_dataset(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/compute_transects_subtask.py", line 696, in build_observational_dataset
+    dsObs = xr.open_dataset(fileName)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/WOCE/WOCE_A21_Drake_Passage_20181126.nc'
+Warning: woceTransects: remapTransects failed during check and will not be run
+Warning: subtask of woceTransects failed during check, so this task will not be run
+Preprocessing SOSE transect data...
+  temperature
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SOSE/SOSE_2005-2010_monthly_pot_temp_SouthernOcean_0.167x0.167degree_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '9b7f62c1-0b0d-4966-90ab-5f3092708b0e']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/compute_transects_subtask.py", line 189, in setup_and_check
+    obsDatasets = self.obsDatasets.get_observations()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/sose_transects.py", line 283, in get_observations
+    self.combine_observations()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/ocean/sose_transects.py", line 339, in combine_observations
+    dsLocal = xr.open_dataset(fileName)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/Ocean/SOSE/SOSE_2005-2010_monthly_pot_temp_SouthernOcean_0.167x0.167degree_20180710.nc'
+Warning: soseTransects: remapTransects failed during check and will not be run
+Warning: subtask of soseTransects failed during check, so this task will not be run
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmpna88lojo/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmpna88lojo/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_to_9000.0x9000.0km_15.0km_Arctic_stereo_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc center --src_regional --dst_regional --ignore_unmapped
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/SSMI/NASATeam_NSIDC0051/SSMI_NASATeam_gridded_concentration_NH_jfm.interp0.5x0.5_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '6543f544-9dd0-4fb1-a44d-7978dbf90e96']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/sea_ice/climatology_map_sea_ice_conc.py", line 266, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/SSMI/NASATeam_NSIDC0051/SSMI_NASATeam_gridded_concentration_NH_jfm.interp0.5x0.5_20180710.nc'
+Warning: climatologyMapSeaIceConcNH: remapObservations_NASATeamJFM failed during check and will not be run
+Warning: subtask of climatologyMapSeaIceConcNH failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/ICESat/ICESat_gridded_mean_thickness_NH_fm.interp0.5x0.5_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), 'a737a21f-1918-4e31-819d-c6b8e3f0f696']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/sea_ice/climatology_map_sea_ice_thick.py", line 202, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/ICESat/ICESat_gridded_mean_thickness_NH_fm.interp0.5x0.5_20180710.nc'
+Warning: climatologyMapSeaIceThickNH: remapObservationsFM failed during check and will not be run
+Warning: subtask of climatologyMapSeaIceThickNH failed during check, so this task will not be run
+running: /users/vankova/miniconda3/envs/mpas_dev_addchic/bin/ESMF_RegridWeightGen --source /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmp42rrvuub/src_mesh.nc --destination /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/tmp42rrvuub/dst_mesh.nc --weight /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/mapping/map_SOwISC12to60E2r4_to_9000.0x9000.0km_15.0km_Antarctic_stereo_bilinear.nc --method bilinear --netcdf4 --no_log --src_loc center --src_regional --dst_regional --ignore_unmapped
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/SSMI/NASATeam_NSIDC0051/SSMI_NASATeam_gridded_concentration_SH_djf.interp0.5x0.5_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '75f4e2fb-e6df-4f2e-9250-5827653dd9ce']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/sea_ice/climatology_map_sea_ice_conc.py", line 266, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/SSMI/NASATeam_NSIDC0051/SSMI_NASATeam_gridded_concentration_SH_djf.interp0.5x0.5_20180710.nc'
+Warning: climatologyMapSeaIceConcSH: remapObservations_NASATeamDJF failed during check and will not be run
+Warning: subtask of climatologyMapSeaIceConcSH failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/ICESat/ICESat_gridded_mean_thickness_SH_fm.interp0.5x0.5_20180710.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '9cee4ab1-252f-4a55-8e20-a2e50e87f3a3']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/sea_ice/climatology_map_sea_ice_thick.py", line 202, in get_observation_descriptor
+    obsDescriptor = LatLonGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 354, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/ICESat/ICESat_gridded_mean_thickness_SH_fm.interp0.5x0.5_20180710.nc'
+Warning: climatologyMapSeaIceThickSH: remapObservationsFM failed during check and will not be run
+Warning: subtask of climatologyMapSeaIceThickSH failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/AnIceFlux/aniceflux_v01_clim_mean_1982-2008.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '1f14ae60-491c-428b-920f-fc4285a4504d']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/sea_ice/climatology_map_production.py", line 297, in get_observation_descriptor
+    obsDescriptor = LatLon2DGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 611, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/AnIceFlux/aniceflux_v01_clim_mean_1982-2008.nc'
+Warning: climatologyMapSeaIceProductionSH: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapSeaIceProductionSH failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 209, in _acquire_with_cache_info
+    file = self._cache[self._key]
+           ~~~~~~~~~~~^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/lru_cache.py", line 55, in __getitem__
+    value = self._cache[key]
+            ~~~~~~~~~~~^^^^^
+KeyError: [<class 'netCDF4._netCDF4.Dataset'>, ('/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/AnIceFlux/aniceflux_v01_clim_mean_1982-2008.nc',), 'r', (('clobber', True), ('diskless', False), ('format', 'NETCDF4'), ('persist', False)), '02a855f3-784b-47e6-91ce-ff65180e626b']
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 122, in setup_and_check
+    self._setup_remappers(self.fileName)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_observed_climatology_subtask.py", line 324, in _setup_remappers
+    obsDescriptor = self.get_observation_descriptor(fileName)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/sea_ice/climatology_map_melting.py", line 297, in get_observation_descriptor
+    obsDescriptor = LatLon2DGridDescriptor.read(fileName=fileName,
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/pyremap/descriptor.py", line 611, in read
+    ds = xarray.open_dataset(fileName)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/api.py", line 540, in open_dataset
+    backend_ds = backend.open_dataset(
+                 ^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 572, in open_dataset
+    store = NetCDF4DataStore.open(
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 376, in open
+    return cls(manager, group=group, mode=mode, lock=lock, autoclose=autoclose)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 323, in __init__
+    self.format = self.ds.data_model
+                  ^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 385, in ds
+    return self._acquire()
+           ^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/netCDF4_.py", line 379, in _acquire
+    with self._manager.acquire_context(needs_lock) as root:
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 197, in acquire_context
+    file, cached = self._acquire_with_cache_info(needs_lock)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/vankova/miniconda3/envs/mpas_dev_addchic/lib/python3.11/site-packages/xarray/backends/file_manager.py", line 215, in _acquire_with_cache_info
+    file = self._opener(*self._args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "src/netCDF4/_netCDF4.pyx", line 2463, in netCDF4._netCDF4.Dataset.__init__
+  File "src/netCDF4/_netCDF4.pyx", line 2026, in netCDF4._netCDF4._ensure_nc_success
+FileNotFoundError: [Errno 2] No such file or directory: b'/usr/projects/climate/SHARED_CLIMATE/diagnostics/observations/SeaIce/AnIceFlux/aniceflux_v01_clim_mean_1982-2008.nc'
+Warning: climatologyMapSeaIceMeltingSH: remapObservations failed during check and will not be run
+Warning: subtask of climatologyMapSeaIceMeltingSH failed during check, so this task will not be run
+Traceback (most recent call last):
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/__main__.py", line 445, in add_task_and_subtasks
+    analysisTask.setup_and_check()
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/remap_mpas_climatology_subtask.py", line 219, in setup_and_check
+    self.mpasClimatologyTask.add_variables(self.variableList, self.seasons)
+  File "/users/vankova/mpas-analysis/add_chicoma_perlmutter/mpas_analysis/shared/climatology/mpas_climatology_task.py", line 218, in add_variables
+    raise ValueError(
+Running tasks:   0% |                                          | ETA:  --:--:--
+ValueError: timeMonthly_avg_significantWaveHeight is not available in timeSeriesStatsMonthlyOutput output:
+['binBoundaryMerHeatTrans', 'binBoundaryMocStreamfunction', 'timeMonthly_counter', 'xtime_startMonthly', 'xtime_endMonthly', 'Time_bnds', 'timeMonthly_avg_daysSinceStartOfSim', 'timeMonthly_avg_ssh', 'timeMonthly_avg_velocityMeridional', 'timeMonthly_avg_velocityZonal', 'timeMonthly_avg_layerThickness', 'timeMonthly_avg_density', 'timeMonthly_avg_potentialDensity', 'timeMonthly_avg_windStressZonal', 'timeMonthly_avg_windStressMeridional', 'timeMonthly_avg_frazilLayerThicknessTendency', 'timeMonthly_avg_meridionalHeatTransportLatZ', 'timeMonthly_avg_meridionalHeatTransportLat', 'timeMonthly_avg_tThreshMLD', 'timeMonthly_avg_dThreshMLD', 'timeMonthly_avg_normalVelocity', 'timeMonthly_avg_vertVelocityTop', 'timeMonthly_avg_zMid', 'timeMonthly_avg_atmosphericPressure', 'timeMonthly_avg_normalMLEvelocity', 'timeMonthly_avg_vertMLEBolusVelocityTop', 'timeMonthly_avg_normalGMBolusVelocity', 'timeMonthly_avg_vertGMBolusVelocityTop', 'timeMonthly_avg_GMBolusVelocityZonal', 'timeMonthly_avg_GMBolusVelocityMeridional', 'timeMonthly_avg_cGMphaseSpeed', 'timeMonthly_avg_velocityZonalTimesTemperature_GM', 'timeMonthly_avg_velocityMeridionalTimesTemperature_GM', 'timeMonthly_avg_normalGMBolusVelocityTimesTemperature', 'timeMonthly_avg_normalGMBolusVelocitySquared', 'timeMonthly_avg_gmKappaScaling', 'timeMonthly_avg_gmBolusKappa', 'timeMonthly_avg_mocStreamvalLatAndDepthGM', 'timeMonthly_avg_mocStreamvalLatAndDepthRegionGM', 'timeMonthly_avg_mocStreamvalLatAndDepthMLE', 'timeMonthly_avg_mocStreamvalLatAndDepthRegionMLE', 'timeMonthly_avg_penetrativeTemperatureFlux', 'timeMonthly_avg_latentHeatFlux', 'timeMonthly_avg_sensibleHeatFlux', 'timeMonthly_avg_longWaveHeatFluxUp', 'timeMonthly_avg_longWaveHeatFluxDown', 'timeMonthly_avg_seaIceHeatFlux', 'timeMonthly_avg_shortWaveHeatFlux', 'timeMonthly_avg_frazilTemperatureTendency', 'timeMonthly_avg_evaporationFlux', 'timeMonthly_avg_seaIceSalinityFlux', 'timeMonthly_avg_seaIceFreshWaterFlux', 'timeMonthly_avg_riverRunoffFlux', 'timeMonthly_avg_iceRunoffFlux', 'timeMonthly_avg_rainFlux', 'timeMonthly_avg_snowFlux', 'timeMonthly_avg_vertNonLocalFlux_vertNonLocalFluxTemp', 'timeMonthly_avg_bottomLayerShortwaveTemperatureFlux', 'timeMonthly_avg_salinitySurfaceRestoringTendency', 'timeMonthly_avg_areaCellGlobal', 'timeMonthly_avg_areaEdgeGlobal', 'timeMonthly_avg_areaTriangleGlobal', 'timeMonthly_avg_volumeCellGlobal', 'timeMonthly_avg_volumeEdgeGlobal', 'timeMonthly_avg_CFLNumberGlobal', 'timeMonthly_avg_vertDiffTopOfCell', 'timeMonthly_avg_vertViscTopOfCell', 'timeMonthly_avg_bulkRichardsonNumber', 'timeMonthly_avg_boundaryLayerDepth', 'timeMonthly_avg_columnIntegratedSpeed', 'timeMonthly_avg_landIceFreshwaterFlux', 'timeMonthly_avg_landIceHeatFlux', 'timeMonthly_avg_heatFluxToLandIce', 'timeMonthly_avg_landIceFrictionVelocity', 'timeMonthly_avg_mocStreamvalLatAndDepth', 'timeMonthly_avg_mocStreamvalLatAndDepthRegion', 'timeMonthly_avg_surfaceBuoyancyForcing', 'timeMonthly_avg_tendLayerThickness', 'timeMonthly_avg_boundaryLayerDepthSmooth', 'timeMonthly_avg_pressureAdjustedSSH', 'timeMonthly_avg_SSHSquared', 'timeMonthly_avg_velocityZonalSquared', 'timeMonthly_avg_velocityMeridionalSquared', 'timeMonthly_avg_normalVelocitySquared', 'timeMonthly_avg_velocityZonalTimesTemperature', 'timeMonthly_avg_velocityMeridionalTimesTemperature', 'timeMonthly_avg_normalVelocityTimesTemperature', 'timeMonthly_avg_oceanHeatContentSfcToBot', 'timeMonthly_avg_oceanHeatContentSfcTo700m', 'timeMonthly_avg_oceanHeatContent700mTo2000m', 'timeMonthly_avg_oceanHeatContent2000mToBot', 'timeMonthly_avg_activeTracerForcingMLTend_temperatureForcingMLTend', 'timeMonthly_avg_activeTracerForcingMLTend_salinityForcingMLTend', 'timeMonthly_avg_activeTracerHorMixMLTend_temperatureHorMixMLTend', 'timeMonthly_avg_activeTracerHorMixMLTend_salinityHorMixMLTend', 'timeMonthly_avg_activeTracerNonLocalMLTend_temperatureNonLocalMLTend', 'timeMonthly_avg_activeTracerNonLocalMLTend_salinityNonLocalMLTend', 'timeMonthly_avg_activeTracerVertAdvectionMLTend_temperatureVertAdvectionMLTend', 'timeMonthly_avg_activeTracerVertAdvectionMLTend_salinityVertAdvectionMLTend', 'timeMonthly_avg_activeTracerHorAdvectionMLTend_temperatureHorAdvectionMLTend', 'timeMonthly_avg_activeTracerHorAdvectionMLTend_salinityHorAdvectionMLTend', 'timeMonthly_avg_activeTracerVertMixMLTend_temperatureVertMixMLTend', 'timeMonthly_avg_activeTracerVertMixMLTend_salinityVertMixMLTend', 'timeMonthly_avg_activeTracersML_temperatureML', 'timeMonthly_avg_activeTracersML_salinityML', 'timeMonthly_avg_BruntVaisalaFreqTop', 'timeMonthly_avg_bruntVaisalaFreqML', 'timeMonthly_avg_activeTracersTendML_temperatureTendML', 'timeMonthly_avg_activeTracersTendML_salinityTendML', 'timeMonthly_avg_icebergHeatFlux', 'timeMonthly_avg_icebergFreshWaterFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_sumSurfaceMaskValue', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceArea', 'timeMonthly_avg_avgValueWithinOceanRegion_avgLatentHeatFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSensibleHeatFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgLongWaveHeatFluxUp', 'timeMonthly_avg_avgValueWithinOceanRegion_avgLongWaveHeatFluxDown', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSeaIceHeatFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgIcebergHeatFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgShortWaveHeatFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgEvaporationFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSeaIceFreshWaterFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgIcebergFreshWaterFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgRiverRunoffFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgIceRunoffFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgRainFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSnowFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSeaIceEnergy', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceThicknessFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceTemperatureFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceSalinityFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSeaIceSalinityFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceWindStressMagnitude', 'timeMonthly_avg_avgValueWithinOceanRegion_avgWindStressZonal', 'timeMonthly_avg_avgValueWithinOceanRegion_avgWindStressMeridional', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSeaSurfacePressure', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceSSH', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceTemperature', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceSalinity', 'timeMonthly_avg_avgValueWithinOceanRegion_avgBoundaryLayerDepth', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceNetHeatFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceNetSalinitFlux', 'timeMonthly_avg_avgValueWithinOceanRegion_avgSurfaceNetFreshWaterFlux', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_sumLayerMaskValue', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerArea', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerThickness', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerDensity', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerPotentialDensity', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerBruntVaisalaFreqTop', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerVelocityZonal', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerVelocityMeridional', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerVertVelocityTop', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperature', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerSalinity', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerKineticEnergyCell', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerRelativeVorticityCell', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerDivergence', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerRelativeEnstrophyCell', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperatureHorAdv', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerSalinityHorAdv', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperatureVertAdv', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerSalinityVertAdv', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperatureSfcFlux', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerSalinitySfcFlux', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperatureSW', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperatureNL', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerSalinityNL', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerTemperatureVertMix', 'timeMonthly_avg_avgValueWithinOceanLayerRegion_avgLayerSalinityVertMix', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_sumVolumeMaskValue', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeArea', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeThickness', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeDensity', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumePotentialDensity', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeBruntVaisalaFreqTop', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeVelocityZonal', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeVelocityMeridional', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeVertVelocityTop', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperature', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeSalinity', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeKineticEnergyCell', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeRelativeVorticityCell', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeDivergence', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeRelativeEnstrophyCell', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperatureHorAdv', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeSalinityHorAdv', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperatureVertAdv', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeSalinityVertAdv', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperatureSfcFlux', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeSalinitySfcFlux', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperatureSW', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperatureNL', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeSalinitySfcNL', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeTemperatureVertMix', 'timeMonthly_avg_avgValueWithinOceanVolumeRegion_avgVolumeSalinityVertMix', 'timeMonthly_avg_minGlobalStats_layerThicknessMin', 'timeMonthly_avg_minGlobalStats_normalVelocityMin', 'timeMonthly_avg_minGlobalStats_tangentialVelocityMin', 'timeMonthly_avg_minGlobalStats_layerThicknessEdgeMin', 'timeMonthly_avg_minGlobalStats_relativeVorticityMin', 'timeMonthly_avg_minGlobalStats_enstrophyMin', 'timeMonthly_avg_minGlobalStats_kineticEnergyCellMin', 'timeMonthly_avg_minGlobalStats_normalizedAbsoluteVorticityMin', 'timeMonthly_avg_minGlobalStats_pressureMin', 'timeMonthly_avg_minGlobalStats_montgomeryPotentialMin', 'timeMonthly_avg_minGlobalStats_vertVelocityTopMin', 'timeMonthly_avg_minGlobalStats_vertAleTransportTopMin', 'timeMonthly_avg_minGlobalStats_lowFreqDivergenceMin', 'timeMonthly_avg_minGlobalStats_highFreqThicknessMin', 'timeMonthly_avg_minGlobalStats_temperatureMin', 'timeMonthly_avg_minGlobalStats_salinityMin', 'timeMonthly_avg_minGlobalStats_layerThicknessPreviousTimestepMin', 'timeMonthly_avg_minGlobalStats_frazilLayerThicknessTendencyMin', 'timeMonthly_avg_minGlobalStats_evaporationFluxMin', 'timeMonthly_avg_minGlobalStats_rainFluxMin', 'timeMonthly_avg_minGlobalStats_snowFluxMin', 'timeMonthly_avg_minGlobalStats_seaIceFreshWaterFluxMin', 'timeMonthly_avg_minGlobalStats_icebergFreshWaterFluxMin', 'timeMonthly_avg_minGlobalStats_riverRunoffFluxMin', 'timeMonthly_avg_minGlobalStats_iceRunoffFluxMin', 'timeMonthly_avg_minGlobalStats_temperatureFluxMin', 'timeMonthly_avg_minGlobalStats_salinityFluxMin', 'timeMonthly_avg_minGlobalStats_salinityRestoringFluxMin', 'timeMonthly_avg_minGlobalStats_landIceFreshwaterFluxMin', 'timeMonthly_avg_minGlobalStats_accumulatedLandIceMassMin', 'timeMonthly_avg_minGlobalStats_accumulatedLandIceHeatMin', 'timeMonthly_avg_minGlobalStats_accumulatedLandIceFrazilMassMin', 'timeMonthly_avg_maxGlobalStats_layerThicknessMax', 'timeMonthly_avg_maxGlobalStats_normalVelocityMax', 'timeMonthly_avg_maxGlobalStats_tangentialVelocityMax', 'timeMonthly_avg_maxGlobalStats_layerThicknessEdgeMax', 'timeMonthly_avg_maxGlobalStats_relativeVorticityMax', 'timeMonthly_avg_maxGlobalStats_enstrophyMax', 'timeMonthly_avg_maxGlobalStats_kineticEnergyCellMax', 'timeMonthly_avg_maxGlobalStats_normalizedAbsoluteVorticityMax', 'timeMonthly_avg_maxGlobalStats_pressureMax', 'timeMonthly_avg_maxGlobalStats_montgomeryPotentialMax', 'timeMonthly_avg_maxGlobalStats_vertVelocityTopMax', 'timeMonthly_avg_maxGlobalStats_vertAleTransportTopMax', 'timeMonthly_avg_maxGlobalStats_lowFreqDivergenceMax', 'timeMonthly_avg_maxGlobalStats_highFreqThicknessMax', 'timeMonthly_avg_maxGlobalStats_temperatureMax', 'timeMonthly_avg_maxGlobalStats_salinityMax', 'timeMonthly_avg_maxGlobalStats_layerThicknessPreviousTimestepMax', 'timeMonthly_avg_maxGlobalStats_frazilLayerThicknessTendencyMax', 'timeMonthly_avg_maxGlobalStats_evaporationFluxMax', 'timeMonthly_avg_maxGlobalStats_rainFluxMax', 'timeMonthly_avg_maxGlobalStats_snowFluxMax', 'timeMonthly_avg_maxGlobalStats_seaIceFreshWaterFluxMax', 'timeMonthly_avg_maxGlobalStats_icebergFreshWaterFluxMax', 'timeMonthly_avg_maxGlobalStats_riverRunoffFluxMax', 'timeMonthly_avg_maxGlobalStats_iceRunoffFluxMax', 'timeMonthly_avg_maxGlobalStats_temperatureFluxMax', 'timeMonthly_avg_maxGlobalStats_salinityFluxMax', 'timeMonthly_avg_maxGlobalStats_salinityRestoringFluxMax', 'timeMonthly_avg_maxGlobalStats_landIceFreshwaterFluxMax', 'timeMonthly_avg_maxGlobalStats_accumulatedLandIceMassMax', 'timeMonthly_avg_maxGlobalStats_accumulatedLandIceHeatMax', 'timeMonthly_avg_maxGlobalStats_accumulatedLandIceFrazilMassMax', 'timeMonthly_avg_sumGlobalStats_layerThicknessSum', 'timeMonthly_avg_sumGlobalStats_normalVelocitySum', 'timeMonthly_avg_sumGlobalStats_tangentialVelocitySum', 'timeMonthly_avg_sumGlobalStats_layerThicknessEdgeSum', 'timeMonthly_avg_sumGlobalStats_relativeVorticitySum', 'timeMonthly_avg_sumGlobalStats_enstrophySum', 'timeMonthly_avg_sumGlobalStats_kineticEnergyCellSum', 'timeMonthly_avg_sumGlobalStats_normalizedAbsoluteVorticitySum', 'timeMonthly_avg_sumGlobalStats_pressureSum', 'timeMonthly_avg_sumGlobalStats_montgomeryPotentialSum', 'timeMonthly_avg_sumGlobalStats_vertVelocityTopSum', 'timeMonthly_avg_sumGlobalStats_vertAleTransportTopSum', 'timeMonthly_avg_sumGlobalStats_lowFreqDivergenceSum', 'timeMonthly_avg_sumGlobalStats_highFreqThicknessSum', 'timeMonthly_avg_sumGlobalStats_temperatureSum', 'timeMonthly_avg_sumGlobalStats_salinitySum', 'timeMonthly_avg_sumGlobalStats_layerThicknessPreviousTimestepSum', 'timeMonthly_avg_sumGlobalStats_frazilLayerThicknessTendencySum', 'timeMonthly_avg_sumGlobalStats_evaporationFluxSum', 'timeMonthly_avg_sumGlobalStats_rainFluxSum', 'timeMonthly_avg_sumGlobalStats_snowFluxSum', 'timeMonthly_avg_sumGlobalStats_seaIceFreshWaterFluxSum', 'timeMonthly_avg_sumGlobalStats_icebergFreshWaterFluxSum', 'timeMonthly_avg_sumGlobalStats_riverRunoffFluxSum', 'timeMonthly_avg_sumGlobalStats_iceRunoffFluxSum', 'timeMonthly_avg_sumGlobalStats_temperatureFluxSum', 'timeMonthly_avg_sumGlobalStats_salinityFluxSum', 'timeMonthly_avg_sumGlobalStats_salinityRestoringFluxSum', 'timeMonthly_avg_sumGlobalStats_landIceFreshwaterFluxSum', 'timeMonthly_avg_sumGlobalStats_accumulatedLandIceMassSum', 'timeMonthly_avg_sumGlobalStats_accumulatedLandIceHeatSum', 'timeMonthly_avg_sumGlobalStats_accumulatedLandIceFrazilMassSum', 'timeMonthly_avg_rmsGlobalStats_layerThicknessRms', 'timeMonthly_avg_rmsGlobalStats_normalVelocityRms', 'timeMonthly_avg_rmsGlobalStats_tangentialVelocityRms', 'timeMonthly_avg_rmsGlobalStats_layerThicknessEdgeRms', 'timeMonthly_avg_rmsGlobalStats_relativeVorticityRms', 'timeMonthly_avg_rmsGlobalStats_enstrophyRms', 'timeMonthly_avg_rmsGlobalStats_kineticEnergyCellRms', 'timeMonthly_avg_rmsGlobalStats_normalizedAbsoluteVorticityRms', 'timeMonthly_avg_rmsGlobalStats_pressureRms', 'timeMonthly_avg_rmsGlobalStats_montgomeryPotentialRms', 'timeMonthly_avg_rmsGlobalStats_vertVelocityTopRms', 'timeMonthly_avg_rmsGlobalStats_vertAleTransportTopRms', 'timeMonthly_avg_rmsGlobalStats_lowFreqDivergenceRms', 'timeMonthly_avg_rmsGlobalStats_highFreqThicknessRms', 'timeMonthly_avg_rmsGlobalStats_temperatureRms', 'timeMonthly_avg_rmsGlobalStats_salinityRms', 'timeMonthly_avg_rmsGlobalStats_layerThicknessPreviousTimestepRms', 'timeMonthly_avg_rmsGlobalStats_frazilLayerThicknessTendencyRms', 'timeMonthly_avg_rmsGlobalStats_evaporationFluxRms', 'timeMonthly_avg_rmsGlobalStats_rainFluxRms', 'timeMonthly_avg_rmsGlobalStats_snowFluxRms', 'timeMonthly_avg_rmsGlobalStats_seaIceFreshWaterFluxRms', 'timeMonthly_avg_rmsGlobalStats_icebergFreshWaterFluxRms', 'timeMonthly_avg_rmsGlobalStats_riverRunoffFluxRms', 'timeMonthly_avg_rmsGlobalStats_iceRunoffFluxRms', 'timeMonthly_avg_rmsGlobalStats_temperatureFluxRms', 'timeMonthly_avg_rmsGlobalStats_salinityFluxRms', 'timeMonthly_avg_rmsGlobalStats_salinityRestoringFluxRms', 'timeMonthly_avg_rmsGlobalStats_landIceFreshwaterFluxRms', 'timeMonthly_avg_rmsGlobalStats_accumulatedLandIceMassRms', 'timeMonthly_avg_rmsGlobalStats_accumulatedLandIceHeatRms', 'timeMonthly_avg_rmsGlobalStats_accumulatedLandIceFrazilMassRms', 'timeMonthly_avg_avgGlobalStats_layerThicknessAvg', 'timeMonthly_avg_avgGlobalStats_normalVelocityAvg', 'timeMonthly_avg_avgGlobalStats_tangentialVelocityAvg', 'timeMonthly_avg_avgGlobalStats_layerThicknessEdgeAvg', 'timeMonthly_avg_avgGlobalStats_relativeVorticityAvg', 'timeMonthly_avg_avgGlobalStats_enstrophyAvg', 'timeMonthly_avg_avgGlobalStats_kineticEnergyCellAvg', 'timeMonthly_avg_avgGlobalStats_normalizedAbsoluteVorticityAvg', 'timeMonthly_avg_avgGlobalStats_pressureAvg', 'timeMonthly_avg_avgGlobalStats_montgomeryPotentialAvg', 'timeMonthly_avg_avgGlobalStats_vertVelocityTopAvg', 'timeMonthly_avg_avgGlobalStats_vertAleTransportTopAvg', 'timeMonthly_avg_avgGlobalStats_lowFreqDivergenceAvg', 'timeMonthly_avg_avgGlobalStats_highFreqThicknessAvg', 'timeMonthly_avg_avgGlobalStats_temperatureAvg', 'timeMonthly_avg_avgGlobalStats_salinityAvg', 'timeMonthly_avg_avgGlobalStats_layerThicknessPreviousTimestepAvg', 'timeMonthly_avg_avgGlobalStats_frazilLayerThicknessTendencyAvg', 'timeMonthly_avg_avgGlobalStats_evaporationFluxAvg', 'timeMonthly_avg_avgGlobalStats_rainFluxAvg', 'timeMonthly_avg_avgGlobalStats_snowFluxAvg', 'timeMonthly_avg_avgGlobalStats_seaIceFreshWaterFluxAvg', 'timeMonthly_avg_avgGlobalStats_icebergFreshWaterFluxAvg', 'timeMonthly_avg_avgGlobalStats_riverRunoffFluxAvg', 'timeMonthly_avg_avgGlobalStats_iceRunoffFluxAvg', 'timeMonthly_avg_avgGlobalStats_temperatureFluxAvg', 'timeMonthly_avg_avgGlobalStats_salinityFluxAvg', 'timeMonthly_avg_avgGlobalStats_salinityRestoringFluxAvg', 'timeMonthly_avg_avgGlobalStats_landIceFreshwaterFluxAvg', 'timeMonthly_avg_avgGlobalStats_accumulatedLandIceMassAvg', 'timeMonthly_avg_avgGlobalStats_accumulatedLandIceHeatAvg', 'timeMonthly_avg_avgGlobalStats_accumulatedLandIceFrazilMassAvg', 'timeMonthly_avg_vertSumMinGlobalStats_layerThicknessMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_normalVelocityMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_tangentialVelocityMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_layerThicknessEdgeMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_relativeVorticityMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_enstrophyMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_kineticEnergyCellMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_normalizedAbsoluteVorticityMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_pressureMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_montgomeryPotentialMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_vertVelocityTopMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_vertAleTransportTopMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_lowFreqDivergenceMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_highFreqThicknessMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_temperatureMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_salinityMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_layerThicknessPreviousTimestepMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_frazilLayerThicknessTendencyMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_evaporationFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_rainFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_snowFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_seaIceFreshWaterFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_icebergFreshWaterFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_riverRunoffFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_iceRunoffFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_temperatureFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_salinityFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_salinityRestoringFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_landIceFreshwaterFluxMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_accumulatedLandIceMassMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_accumulatedLandIceHeatMinVertSum', 'timeMonthly_avg_vertSumMinGlobalStats_accumulatedLandIceFrazilMassMinVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_layerThicknessMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_normalVelocityMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_tangentialVelocityMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_layerThicknessEdgeMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_relativeVorticityMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_enstrophyMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_kineticEnergyCellMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_normalizedAbsoluteVorticityMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_pressureMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_montgomeryPotentialMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_vertVelocityTopMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_vertAleTransportTopMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_lowFreqDivergenceMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_highFreqThicknessMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_temperatureMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_salinityMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_layerThicknessPreviousTimestepMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_frazilLayerThicknessTendencyMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_evaporationFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_rainFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_snowFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_seaIceFreshWaterFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_icebergFreshWaterFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_riverRunoffFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_iceRunoffFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_temperatureFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_salinityFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_salinityRestoringFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_landIceFreshwaterFluxMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_accumulatedLandIceMassMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_accumulatedLandIceHeatMaxVertSum', 'timeMonthly_avg_vertSumMaxGlobalStats_accumulatedLandIceFrazilMassMaxVertSum', 'timeMonthly_avg_activeTracersTend_temperatureTend', 'timeMonthly_avg_activeTracersTend_salinityTend', 'timeMonthly_avg_activeTracerHorizontalAdvectionTendency_temperatureHorizontalAdvectionTendency', 'timeMonthly_avg_activeTracerHorizontalAdvectionTendency_salinityHorizontalAdvectionTendency', 'timeMonthly_avg_activeTracerVerticalAdvectionTendency_temperatureVerticalAdvectionTendency', 'timeMonthly_avg_activeTracerVerticalAdvectionTendency_salinityVerticalAdvectionTendency', 'timeMonthly_avg_activeTracerVertMixTendency_temperatureVertMixTendency', 'timeMonthly_avg_activeTracerVertMixTendency_salinityVertMixTendency', 'timeMonthly_avg_activeTracerHorMixTendency_temperatureHorMixTendency', 'timeMonthly_avg_activeTracerHorMixTendency_salinityHorMixTendency', 'timeMonthly_avg_activeTracerSurfaceFluxTendency_temperatureSurfaceFluxTendency', 'timeMonthly_avg_activeTracerSurfaceFluxTendency_salinitySurfaceFluxTendency', 'timeMonthly_avg_temperatureShortWaveTendency', 'timeMonthly_avg_activeTracerNonLocalTendency_temperatureNonLocalTendency', 'timeMonthly_avg_activeTracerNonLocalTendency_salinityNonLocalTendency', 'timeMonthly_avg_landIceBoundaryLayerTracers_landIceBoundaryLayerTemperature', 'timeMonthly_avg_landIceBoundaryLayerTracers_landIceBoundaryLayerSalinity', 'timeMonthly_avg_landIceInterfaceTracers_landIceInterfaceTemperature', 'timeMonthly_avg_landIceInterfaceTracers_landIceInterfaceSalinity', 'timeMonthly_avg_activeTracerVerticalAdvectionTopFlux_temperatureVerticalAdvectionTopFlux', 'timeMonthly_avg_activeTracerVerticalAdvectionTopFlux_salinityVerticalAdvectionTopFlux', 'timeMonthly_avg_activeTracerHorizontalAdvectionEdgeFlux_temperatureHorizontalAdvectionEdgeFlux', 'timeMonthly_avg_activeTracerHorizontalAdvectionEdgeFlux_salinityHorizontalAdvectionEdgeFlux', 'timeMonthly_avg_totalFreshWaterTemperatureFlux', 'timeMonthly_avg_activeTracers_temperature', 'timeMonthly_avg_activeTracers_salinity', 'timeMonthly_avg_activeTracersSurfaceFlux_temperatureSurfaceFlux', 'timeMonthly_avg_activeTracersSurfaceFlux_salinitySurfaceFlux', 'timeMonthly_avg_activeTracersSurfaceFluxRunoff_temperatureSurfaceFluxRunoff', 'timeMonthly_avg_activeTracersSurfaceFluxRunoff_salinitySurfaceFluxRunoff', 'timeMonthly_avg_activeTracersSurfaceFluxRemoved_temperatureSurfaceFluxRemoved', 'timeMonthly_avg_activeTracersSurfaceFluxRemoved_salinitySurfaceFluxRemoved', 'timeMonthly_avg_nonLocalSurfaceTracerFlux_nonLocalTemperatureSurfaceFlux', 'timeMonthly_avg_nonLocalSurfaceTracerFlux_nonLocalSalinitySurfaceFlux']
+Warning: climatologyMapWaves: remapMpasClimatology failed during check and will not be run
+Warning: prerequisite of climatologyMapWaves failed during check, so this task will not be run
+
+40 tasks and subtasks failed during setup.
+
+Running tasks:   0% |                                          | ETA:   0:49:06
+Running tasks:   0% |                                          | ETA:   1:50:43
+Running tasks:   1% |                                          | ETA:   1:20:49
+Running tasks:   2% |                                          | ETA:   0:41:11
+ERROR in task climatologyMapAntarcticMelt: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapAntarcticMelt_remapMpasClimatology.log for details
+ERROR in task climatologyMapSSS: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSSS_remapMpasClimatology.log for details
+Running tasks:   2% |                                          | ETA:   0:41:37
+Running tasks:   2% |                                          | ETA:   0:42:10
+Running tasks:   2% |#                                         | ETA:   0:36:22
+Running tasks:   4% |#                                         | ETA:   0:24:00
+Running tasks:   5% |##                                        | ETA:   0:18:46
+Running tasks:   5% |##                                        | ETA:   0:19:04
+Running tasks:   5% |##                                        | ETA:   0:19:21
+Running tasks:   5% |##                                        | ETA:   0:19:38
+Running tasks:   5% |##                                        | ETA:   0:18:33
+Running tasks:   6% |##                                        | ETA:   0:16:56
+Running tasks:   7% |##                                        | ETA:   0:16:59
+Running tasks:   7% |###                                       | ETA:   0:16:09
+Running tasks:   7% |###                                       | ETA:   0:15:50
+Running tasks:   8% |###                                       | ETA:   0:15:13
+Running tasks:   8% |###                                       | ETA:   0:20:32
+Running tasks:   8% |###                                       | ETA:   0:28:31
+ERROR in task climatologyMapOHCAnomaly: remapMpasClimatology_700-2000m.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapOHCAnomaly_remapMpasClimatology_700-2000m.log for details
+ERROR in task climatologyMapArgoTemperature: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapArgoTemperature_remapMpasClimatology.log for details
+Running tasks:   9% |###                                       | ETA:   0:27:19
+Running tasks:   9% |####                                      | ETA:   0:26:25
+Running tasks:  10% |####                                      | ETA:   0:24:17
+Running tasks:  10% |####                                      | ETA:   0:23:24
+Running tasks:  11% |####                                      | ETA:   0:30:16
+Running tasks:  19% |########                                  | ETA:   0:16:33
+Running tasks:  19% |########                                  | ETA:   0:16:16
+ERROR in task regionalTSDiagrams: climatolgyWOA18_ANN.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/regionalTSDiagrams_climatolgyWOA18_ANN.log for details
+ERROR in task computeRegionMasks: Global_0.25x0.25degree_OceanBasins.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/computeRegionMasks_Global_0.25x0.25degree_OceanBasins.log for details
+Running tasks:  20% |########                                  | ETA:   0:16:03
+Running tasks:  20% |########                                  | ETA:   1:04:42
+Running tasks:  21% |#########                                 | ETA:   1:00:21
+Running tasks:  22% |#########                                 | ETA:   0:59:01
+Running tasks:  22% |#########                                 | ETA:   0:59:02
+Running tasks:  23% |#########                                 | ETA:   0:56:28
+Running tasks:  23% |##########                                | ETA:   0:54:05
+Running tasks:  24% |##########                                | ETA:   0:52:57
+Running tasks:  24% |##########                                | ETA:   0:51:52
+Running tasks:  25% |##########                                | ETA:   0:50:48
+Running tasks:  25% |##########                                | ETA:   0:50:49
+Running tasks:  25% |##########                                | ETA:   0:50:50
+Running tasks:  25% |##########                                | ETA:   0:50:51
+Running tasks:  25% |##########                                | ETA:   0:51:06
+Running tasks:  25% |##########                                | ETA:   0:50:07
+Running tasks:  26% |##########                                | ETA:   0:49:07
+Running tasks:  26% |###########                               | ETA:   0:48:05
+Running tasks:  27% |###########                               | ETA:   0:47:10
+Running tasks:  29% |############                              | ETA:   0:42:05
+Running tasks:  32% |#############                             | ETA:   0:37:02
+Running tasks:  35% |##############                            | ETA:   0:32:46
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Filchner.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Filchner.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Antarctica.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Antarctica.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Peninsula.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Peninsula.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_West_Antarctica.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_West_Antarctica.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_East_Antarctica.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_East_Antarctica.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Larsen_C.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Larsen_C.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Ronne.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Ronne.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Filchner-Ronne.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Filchner-Ronne.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Brunt_Stancomb.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Brunt_Stancomb.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Fimbul.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Fimbul.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Amery.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Amery.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Totten.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Totten.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Eastern_Ross.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Eastern_Ross.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Western_Ross.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Western_Ross.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Ross.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Ross.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Getz.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Getz.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Thwaites.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Thwaites.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Pine_Island.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Pine_Island.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_Abbot.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_Abbot.log for details
+ERROR in task timeSeriesAntarcticMelt: plotMeltRates_George_VI.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesAntarcticMelt_plotMeltRates_George_VI.log for details
+Running tasks:  35% |###############                           | ETA:   0:42:20
+Running tasks:  36% |###############                           | ETA:   0:41:38
+Running tasks:  36% |###############                           | ETA:   0:40:57
+Running tasks:  37% |###############                           | ETA:   0:40:53
+Running tasks:  37% |###############                           | ETA:   0:40:13
+Running tasks:  37% |###############                           | ETA:   0:39:34
+Running tasks:  41% |#################                         | ETA:   0:34:11
+Running tasks:  41% |#################                         | ETA:   0:33:38
+Running tasks:  41% |#################                         | ETA:   0:33:39
+Running tasks:  42% |#################                         | ETA:   0:32:37
+Running tasks:  43% |##################                        | ETA:   0:31:53
+Running tasks:  44% |##################                        | ETA:   0:30:53
+Running tasks:  44% |##################                        | ETA:   0:30:24
+Running tasks:  45% |###################                       | ETA:   0:30:25
+Running tasks:  46% |###################                       | ETA:   0:29:29
+Running tasks:  46% |###################                       | ETA:   0:28:35
+Running tasks:  47% |####################                      | ETA:   0:27:42
+ERROR in task streamfunctionMOC: plotMOCClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/streamfunctionMOC_plotMOCClimatology.log for details
+Running tasks:  48% |####################                      | ETA:   0:27:17
+Running tasks:  48% |####################                      | ETA:   0:26:52
+Running tasks:  48% |####################                      | ETA:   0:26:28
+Running tasks:  49% |####################                      | ETA:   0:26:04
+Running tasks:  49% |####################                      | ETA:   0:25:40
+Running tasks:  50% |#####################                     | ETA:   0:25:18
+Running tasks:  50% |#####################                     | ETA:   0:24:57
+Running tasks:  50% |#####################                     | ETA:   0:24:34
+Running tasks:  51% |#####################                     | ETA:   0:24:13
+Running tasks:  53% |######################                    | ETA:   0:22:24
+Running tasks:  53% |######################                    | ETA:   0:22:04
+Running tasks:  53% |######################                    | ETA:   0:21:44
+Running tasks:  55% |#######################                   | ETA:   0:20:05
+Running tasks:  56% |#######################                   | ETA:   0:21:41
+Running tasks:  56% |#######################                   | ETA:   0:21:23
+ERROR in task timeSeriesSeaIceAreaVol.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/timeSeriesSeaIceAreaVol.log for details
+ERROR in task climatologyMapSeaIceThickSH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceThickSH_remapMpasClimatology.log for details
+ERROR in task climatologyMapSeaIceProductionSH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceProductionSH_remapMpasClimatology.log for details
+ERROR in task climatologyMapSeaIceMeltingSH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceMeltingSH_remapMpasClimatology.log for details
+ERROR in task climatologyMapSeaIceProductionNH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceProductionNH_remapMpasClimatology.log for details
+ERROR in task climatologyMapSeaIceConcSH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceConcSH_remapMpasClimatology.log for details
+ERROR in task climatologyMapSeaIceConcNH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceConcNH_remapMpasClimatology.log for details
+ERROR in task climatologyMapSeaIceMeltingNH: remapMpasClimatology.  See log file /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs/climatologyMapSeaIceMeltingNH_remapMpasClimatology.log for details
+Running tasks:  57% |#######################                   | ETA:   0:21:03
+Running tasks:  64% |###########################               | ETA:   0:15:10
+Running tasks:  65% |###########################               | ETA:   0:14:54
+Running tasks:  65% |###########################               | ETA:   0:14:54
+Running tasks:  65% |###########################               | ETA:   0:14:55
+Running tasks:  65% |###########################               | ETA:   0:14:55
+Running tasks:  66% |###########################               | ETA:   0:14:09
+Running tasks:  68% |############################              | ETA:   0:12:43
+Running tasks:  69% |#############################             | ETA:   0:12:03
+Running tasks:  69% |#############################             | ETA:   0:12:03
+Running tasks:  69% |#############################             | ETA:   0:12:03
+Running tasks:  69% |#############################             | ETA:   0:12:03
+Running tasks:  70% |#############################             | ETA:   0:11:50
+Running tasks:  70% |#############################             | ETA:   0:11:37
+Running tasks:  71% |#############################             | ETA:   0:11:24
+Running tasks:  71% |##############################            | ETA:   0:11:11
+Running tasks:  71% |##############################            | ETA:   0:10:58
+Running tasks:  72% |##############################            | ETA:   0:10:46
+Running tasks:  72% |##############################            | ETA:   0:10:33
+Running tasks:  73% |##############################            | ETA:   0:10:21
+Running tasks:  73% |##############################            | ETA:   0:10:09
+Running tasks:  73% |###############################           | ETA:   0:09:57
+Running tasks:  74% |###############################           | ETA:   0:09:45
+Running tasks:  74% |###############################           | ETA:   0:09:33
+Running tasks:  75% |###############################           | ETA:   0:09:21
+Running tasks:  75% |###############################           | ETA:   0:09:10
+Running tasks:  75% |###############################           | ETA:   0:08:59
+Running tasks:  76% |###############################           | ETA:   0:08:47
+Running tasks:  76% |################################          | ETA:   0:08:36
+Running tasks:  78% |################################          | ETA:   0:07:52
+Running tasks:  78% |################################          | ETA:   0:07:42
+Running tasks:  78% |################################          | ETA:   0:07:42
+Running tasks:  78% |################################          | ETA:   0:07:42
+Running tasks:  79% |#################################         | ETA:   0:07:10
+Running tasks:  80% |#################################         | ETA:   0:07:00
+Running tasks:  80% |#################################         | ETA:   0:06:50
+Running tasks:  80% |#################################         | ETA:   0:06:50
+Running tasks:  80% |#################################         | ETA:   0:06:40
+Running tasks:  81% |##################################        | ETA:   0:06:20
+Running tasks:  82% |##################################        | ETA:   0:06:10
+Running tasks:  82% |##################################        | ETA:   0:05:51
+Running tasks:  82% |##################################        | ETA:   0:05:51
+Running tasks:  83% |##################################        | ETA:   0:05:41
+Running tasks:  84% |###################################       | ETA:   0:05:13
+Running tasks:  87% |####################################      | ETA:   0:04:01
+Running tasks:  87% |####################################      | ETA:   0:03:53
+Running tasks:  88% |#####################################     | ETA:   0:03:36
+Running tasks:  89% |#####################################     | ETA:   0:03:11
+Running tasks:  90% |######################################    | ETA:   0:02:55
+Running tasks:  90% |######################################    | ETA:   0:02:55
+Running tasks:  90% |######################################    | ETA:   0:02:55
+Running tasks:  91% |######################################    | ETA:   0:02:47
+Running tasks:  91% |######################################    | ETA:   0:02:31
+Running tasks:  92% |######################################    | ETA:   0:02:23
+Running tasks:  92% |######################################    | ETA:   0:02:15
+Running tasks:  92% |#######################################   | ETA:   0:02:08
+Running tasks:  93% |#######################################   | ETA:   0:02:00
+Running tasks:  93% |#######################################   | ETA:   0:01:53
+Running tasks:  93% |#######################################   | ETA:   0:01:53
+Running tasks:  93% |#######################################   | ETA:   0:01:53
+Running tasks:  94% |#######################################   | ETA:   0:01:45
+Running tasks:  94% |#######################################   | ETA:   0:01:30
+Running tasks:  95% |########################################  | ETA:   0:01:23
+Running tasks:  95% |########################################  | ETA:   0:01:16
+Running tasks:  96% |########################################  | ETA:   0:01:09
+Running tasks:  96% |########################################  | ETA:   0:00:54
+Running tasks:  97% |######################################### | ETA:   0:00:40
+Running tasks:  97% |######################################### | ETA:   0:00:40
+Running tasks:  98% |######################################### | ETA:   0:00:26
+Running tasks:  98% |######################################### | ETA:   0:00:26
+Running tasks:  98% |######################################### | ETA:   0:00:26
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:27
+Running tasks:  98% |######################################### | ETA:   0:00:20
+Running tasks:  99% |######################################### | ETA:   0:00:13
+Running tasks:  99% |######################################### | ETA:   0:00:06
+Running tasks: 100% |##########################################| Time:  0:28:29
+
+There were errors in 35 tasks: climatologyMapAntarcticMelt: remapMpasClimatology, climatologyMapSSS: remapMpasClimatology, climatologyMapOHCAnomaly: remapMpasClimatology_700-2000m, climatologyMapArgoTemperature: remapMpasClimatology, regionalTSDiagrams: climatolgyWOA18_ANN, computeRegionMasks: Global_0.25x0.25degree_OceanBasins, timeSeriesAntarcticMelt: plotMeltRates_Filchner, timeSeriesAntarcticMelt: plotMeltRates_Antarctica, timeSeriesAntarcticMelt: plotMeltRates_Peninsula, timeSeriesAntarcticMelt: plotMeltRates_West_Antarctica, timeSeriesAntarcticMelt: plotMeltRates_East_Antarctica, timeSeriesAntarcticMelt: plotMeltRates_Larsen_C, timeSeriesAntarcticMelt: plotMeltRates_Ronne, timeSeriesAntarcticMelt: plotMeltRates_Filchner-Ronne, timeSeriesAntarcticMelt: plotMeltRates_Brunt_Stancomb, timeSeriesAntarcticMelt: plotMeltRates_Fimbul, timeSeriesAntarcticMelt: plotMeltRates_Amery, timeSeriesAntarcticMelt: plotMeltRates_Totten, timeSeriesAntarcticMelt: plotMeltRates_Eastern_Ross, timeSeriesAntarcticMelt: plotMeltRates_Western_Ross, timeSeriesAntarcticMelt: plotMeltRates_Ross, timeSeriesAntarcticMelt: plotMeltRates_Getz, timeSeriesAntarcticMelt: plotMeltRates_Thwaites, timeSeriesAntarcticMelt: plotMeltRates_Pine_Island, timeSeriesAntarcticMelt: plotMeltRates_Abbot, timeSeriesAntarcticMelt: plotMeltRates_George_VI, streamfunctionMOC: plotMOCClimatology, timeSeriesSeaIceAreaVol, climatologyMapSeaIceThickSH: remapMpasClimatology, climatologyMapSeaIceProductionSH: remapMpasClimatology, climatologyMapSeaIceMeltingSH: remapMpasClimatology, climatologyMapSeaIceProductionNH: remapMpasClimatology, climatologyMapSeaIceConcSH: remapMpasClimatology, climatologyMapSeaIceConcNH: remapMpasClimatology, climatologyMapSeaIceMeltingNH: remapMpasClimatology
+See log files in /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs for details.
+The following commands may be helpful:
+  cd /lustre/scratch4/turquoise/vankova/E3SM/analysis/chic_test_00/clim_1-2_ts_1-2/logs
+  grep Error *.log
