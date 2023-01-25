@@ -18,16 +18,16 @@ from mpas_tools.io import write_netcdf
 dir_E3SM_data = '/lustre/scratch4/turquoise/vankova/E3SM/scratch/chicoma-cpu/20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu/run/'
 
 # E3SM restart output file for mesh and coordinates
-fname_rst = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.mpassi.rst.0002-01-01_00000.nc''
+fname_rst = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.mpaso.rst.0002-01-01_00000.nc'
 # E3SM meltrate output file
-fname_out_prefix = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.mpassi.hist.am.timeSeriesStatsMonthly.'
+fname_out_prefix = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.mpaso.hist.am.timeSeriesStatsMonthly.'
 fname_out_suffix = '-01.nc'
-yr1 = 00 #start year
+yr1 = 01 #start year
 yrmax = 30 #number of years
 jmax = 12 #number of months
 
 # ApRES data directory
-dir_ApRES_data = '~/mpas-analysis/fris_map2/iv_data/ApRES_timeseries'
+dir_ApRES_data = '~/mpas-analysis/fris_map2/iv_data/ApRES_timeseries/'
 
 # ApRES sites to compare
 site_names = ["R02" , "R03" , "R04" , "R05" , "R06" , "R07" , "R08" , "R10" , "R14" , "R15" , "FSW2" , "FSE1" , "FNE3" , "Site5"]
@@ -97,10 +97,11 @@ for y in range(yrmax):
     yr = yr1+y
     for j in range(jmax):
         ctr = ctr + 1;
-        if j + 1 < 10:
-            fout = f'{dir_E3SM_data}{fname_out_prefix}00{yr}-0{j + 1}{fname_out_suffix}'
-        else:
-            fout = f'{dir_E3SM_data}{fname_out_prefix}00{yr}-{j + 1}{fname_out_suffix}'
+        #if j + 1 < 10:
+        #    fout = f'{dir_E3SM_data}{fname_out_prefix}00{yr}-0{j + 1}{fname_out_suffix}'
+        #else:
+        #    fout = f'{dir_E3SM_data}{fname_out_prefix}00{yr}-{j + 1}{fname_out_suffix}'
+        fout = f'{dir_E3SM_data}{fname_out_prefix}{yr:04}-{j + 1:02}{fname_out_suffix}'
         print(fout)
         out_mr = xarray.open_dataset(fout)
         dsMesh = out_mr[['timeMonthly_avg_landIceFreshwaterFlux']]
