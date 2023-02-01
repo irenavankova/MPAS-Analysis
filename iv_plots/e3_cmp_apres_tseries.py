@@ -22,13 +22,15 @@ fname_rst = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.m
 # E3SM meltrate output file
 fname_out_prefix = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.mpaso.hist.am.timeSeriesStatsMonthly.'
 fname_out_suffix = '-01.nc'
-yr1 = 01 #start year
-yrmax = 30 #number of years
+yr1 = 1 #start year
+yrmax = 59 #number of years
 jmax = 12 #number of months
 
-# ApRES data directory
-dir_ApRES_data = '~/mpas-analysis/fris_map2/iv_data/ApRES_timeseries/'
+dir_fig_save = '/users/vankova/mpas-analysis/iv_analysis/'
 
+# ApRES data directory
+#dir_ApRES_data = '~/mpas-analysis/fris_map2/iv_data/ApRES_timeseries/'
+dir_ApRES_data = '/usr/projects/e3sm/diagnostics/observations/Ocean/FRIS/ApRES_timeseries/'
 # ApRES sites to compare
 site_names = ["R02" , "R03" , "R04" , "R05" , "R06" , "R07" , "R08" , "R10" , "R14" , "R15" , "FSW2" , "FSE1" , "FNE3" , "Site5"]
 ApRES_prefix = 'FRIS_basal_melt_'
@@ -137,5 +139,5 @@ for k in range(kmax):
     plt.ylabel('Melt rate (m/a)')
     plt.title(site_names[k])
     plt.legend(loc = 1)
-    plt.savefig(f'{site_names[k]}_compare.png', bbox_inches='tight', dpi=300)
+    plt.savefig(f'{dir_fig_save}{site_names[k]}_compare.png', bbox_inches='tight', dpi=300)
     #plt.show()
