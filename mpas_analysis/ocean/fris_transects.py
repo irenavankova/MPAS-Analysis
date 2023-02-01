@@ -80,10 +80,16 @@ class FrisTransects(AnalysisTask):
         observationsDirectory = build_obs_path(
             config, 'ocean', 'woceSubdirectory')
 
+        #observationsDirectory = build_obs_path(
+        #    config, 'ocean', 'frisTransectsSubdirectory')
+
         origObsFileNames = \
             {'WOCE_A21': 'WOCE_A21_Drake_Passage_20181126.nc',
              'WOCE_A23': 'WOCE_A23_South_Atlantic_20181126.nc',
              'WOCE_A12': 'WOCE_A12_Prime_Meridian_20181126.nc'}
+
+        #origObsFileNames = \
+        #    {'FRIS_front_2018': 'FRIS_front_transect_2018.nc'}
 
         obsFileNames = {}
         for transectName in horizontalBounds:
