@@ -13,7 +13,7 @@ conda activate mpas_dev
 
 export HDF5_USE_FILE_LOCKING=FALSE
 
-mpas_analysis --verbose -m chicoma-cpu /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/chic_e3sm_test_01_10.cfg
+mpas_analysis --verbose -m chicoma-cpu --polar_regions /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/chic_e3sm_test_40_49.cfg
 
 
 

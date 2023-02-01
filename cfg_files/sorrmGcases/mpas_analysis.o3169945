@@ -1,8 +1,0 @@
-Detected E3SM supported machine: chicoma-cpu
-Traceback (most recent call last):
-  File "/users/vankova/miniconda3/envs/mpas_dev/bin/mpas_analysis", line 33, in <module>
-    sys.exit(load_entry_point('mpas-analysis', 'console_scripts', 'mpas_analysis')())
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/users/vankova/mpas-analysis/develop/mpas_analysis/__main__.py", line 925, in main
-    raise OSError(f'Config file {user_config} not found.')
-OSError: Config file /users/vankova/mpas-analysis/fris_map2/cfg_files/sorrmGcases/chic_e3sm_test_11_20.cfg not found.
