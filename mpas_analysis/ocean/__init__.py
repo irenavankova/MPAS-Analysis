@@ -65,3 +65,6 @@ from mpas_analysis.ocean.hovmoller_ocean_regions import \
 
 from mpas_analysis.ocean.climatology_map_waves import \
     ClimatologyMapWaves
+
+from mpas_analysis.ocean.fris_transects import FrisTransects
+
