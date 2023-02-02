@@ -90,7 +90,10 @@ class FrisTransects(AnalysisTask):
 
         origObsFileNames = \
             {'FRIS_front_2018': 'FRIS_front_transect_2018.nc',
-             'FRIS_front_1995': 'FRIS_front_transect_1995.nc'}
+             'FRIS_front_1995': 'FRIS_front_transect_1995.nc',
+             'FRIS_front_1999': 'FRIS_front_transect_1999.nc',
+             'FRIS_fTrough_1999': 'FRIS_FilchnerTrough_transect_1999.nc',
+             'FRIS_shelfBreak_1999': 'FRIS_ShelfBreak_transect_1999.nc'}
 
         obsFileNames = {}
         for transectName in horizontalBounds:
