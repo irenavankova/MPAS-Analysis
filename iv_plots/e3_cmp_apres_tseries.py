@@ -23,7 +23,7 @@ fname_rst = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.m
 fname_out_prefix = '20230109.GMPAS-JRA1p5-DIB-ISMF.TL319_SOwISC12to60E2r4.chicoma-cpu.mpaso.hist.am.timeSeriesStatsMonthly.'
 fname_out_suffix = '-01.nc'
 yr1 = 1 #start year
-yrmax = 59 #number of years
+yrmax = 15 #number of years
 jmax = 12 #number of months
 
 dir_fig_save = '/users/vankova/mpas-analysis/iv_analysis/'
@@ -131,11 +131,12 @@ for k in range(kmax):
     mean_melt = ncApRES.mean_melt
     melt_monthly = ncApRES.melt_timeseries_monthly
 
-    plt.plot(time, mr[k][:], label = 'Model')
-    plt.plot(timeap, melt, label = 'ApRES')
-    plt.plot(timeap_monthly, melt_monthly, label='ApRES monthly')
-    plt.plot(timeap, melt*0+mean_melt, label = 'ApRES mean')
-    plt.xlabel('Time')
+    d2y = 365.25
+    plt.plot(time/d2y, mr[k][:], label = 'Model')
+    #plt.plot(timeap, melt, label = 'ApRES')
+    plt.plot(timeap_monthly/d2y, melt_monthly, label='ApRES monthly')
+    #plt.plot(timeap, melt*0+mean_melt, label = 'ApRES mean')
+    plt.xlabel('Time (years)')
     plt.ylabel('Melt rate (m/a)')
     plt.title(site_names[k])
     plt.legend(loc = 1)
