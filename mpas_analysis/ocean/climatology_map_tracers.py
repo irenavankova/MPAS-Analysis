@@ -206,6 +206,7 @@ class ClimatologyMapTracers(AnalysisTask):
 
             if controlConfig is None:
                 remapObsSubtask = None
+                galleryName = None
                 refTitleLabel = None
 
                 refFieldName = None
