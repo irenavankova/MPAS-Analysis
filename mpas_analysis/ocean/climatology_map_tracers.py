@@ -204,7 +204,7 @@ class ClimatologyMapTracers(AnalysisTask):
             else:
                 fieldDepths = None
 
-            if control_config is None:
+            if controlConfig is None:
                 remapObsSubtask = None
                 refTitleLabel = None
 
