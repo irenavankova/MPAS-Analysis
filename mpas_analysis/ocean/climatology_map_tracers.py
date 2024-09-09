@@ -25,6 +25,7 @@ from mpas_analysis.shared.climatology import RemapMpasClimatologySubtask
 from mpas_analysis.ocean.remap_depth_slices_subtask import \
     RemapDepthSlicesSubtask
 from mpas_analysis.shared.plot import PlotClimatologyMapSubtask
+from mpas_analysis.ocean.remap_sose_climatology import RemapSoseClimatology
 
 from mpas_analysis.shared.io.utility import build_obs_path
 
@@ -66,14 +67,62 @@ class ClimatologyMapTracers(AnalysisTask):
               '3D': True,
               'obsFilePrefix': 'pot_temp',
               'obsFieldName': 'theta',
-              'obsBotFieldName': 'botTheta'}]
+              'obsBotFieldName': 'botTheta'},
+             {'prefix': 'salinity',
+              'mpas': 'timeMonthly_avg_activeTracers_salinity',
+              'units': r'PSU',
+              'titleName': 'Salinity',
+              '3D': True,
+              'obsFilePrefix': 'salinity',
+              'obsFieldName': 'salinity',
+              'obsBotFieldName': 'botSalinity'},
+             {'prefix': 'potentialDensity',
+              'mpas': 'timeMonthly_avg_potentialDensity',
+              'units': r'kg m$^{-3}$',
+              'titleName': 'Potential Density',
+              '3D': True,
+              'obsFilePrefix': 'pot_den',
+              'obsFieldName': 'potentialDensity',
+              'obsBotFieldName': 'botPotentialDensity'},
+             {'prefix': 'mixedLayerDepth',
+              'mpas': 'timeMonthly_avg_dThreshMLD',
+              'units': r'm',
+              'titleName': 'Mixed Layer Depth',
+              '3D': False,
+              'obsFilePrefix': 'mld',
+              'obsFieldName': 'mld',
+              'obsBotFieldName': None},
+             {'prefix': 'zonalVelocity',
+              'mpas': 'timeMonthly_avg_velocityZonal',
+              'units': r'm s$^{-1}$',
+              'titleName': 'Zonal Velocity',
+              '3D': True,
+              'obsFilePrefix': 'zonal_vel',
+              'obsFieldName': 'zonalVel',
+              'obsBotFieldName': 'botZonalVel'},
+             {'prefix': 'meridionalVelocity',
+              'mpas': 'timeMonthly_avg_velocityMeridional',
+              'units': r'm s$^{-1}$',
+              'titleName': 'Meridional Velocity',
+              '3D': True,
+              'obsFilePrefix': 'merid_vel',
+              'obsFieldName': 'meridVel',
+              'obsBotFieldName': 'botMeridVel'},
+             {'prefix': 'velocityMagnitude',
+              'mpas': 'velMag',
+              'units': r'm s$^{-1}$',
+              'titleName': 'Velocity Magnitude',
+              '3D': True,
+              'obsFilePrefix': 'vel_mag',
+              'obsFieldName': 'velMag',
+              'obsBotFieldName': 'botVelMag'}]
 
-        tags = ['climatology', 'horizontalMap',
+        tags = ['climatology', 'horizontalMap', 'sose', 'publicObs',
                 'antarctic'] + [field['prefix'] for field in fields]
 
         # call the constructor from the base class (AnalysisTask)
         super(ClimatologyMapTracers, self).__init__(
-            config=config, taskName='ClimatologyMapTracers',
+            config=config, taskName='climatologyMapTracers',
             componentName='ocean',
             tags=tags)
 
@@ -125,14 +174,25 @@ class ClimatologyMapTracers(AnalysisTask):
             else:
                 shallow.append(depth >= shallowVsDeepColormapDepth)
 
-        remapMpasSubtask = RemapMpasClimatologySubtask(
-            mpasClimatologyTask=mpasClimatologyTask,
-            parentTask=self,
-            climatologyName='Tracers',
-            variableList=variableList,
-            seasons=seasons,
-            comparisonGridNames=comparisonGridNames,
-            iselValues=None)
+        if depths is None:
+            remapMpasSubtask = RemapMpasClimatologySubtask(
+                mpasClimatologyTask=mpasClimatologyTask,
+                parentTask=self,
+                climatologyName='SOSE',
+                variableList=variableList,
+                seasons=seasons,
+                comparisonGridNames=comparisonGridNames,
+                iselValues=None)
+        else:
+            remapMpasSubtask = RemapMpasVelMagClimatology(
+                mpasClimatologyTask=mpasClimatologyTask,
+                parentTask=self,
+                climatologyName='SOSE',
+                variableList=variableList,
+                seasons=seasons,
+                depths=depths,
+                comparisonGridNames=comparisonGridNames,
+                iselValues=None)
 
         for field in fields:
             fieldPrefix = field['prefix']
@@ -145,11 +205,30 @@ class ClimatologyMapTracers(AnalysisTask):
                 fieldDepths = None
 
             if controlConfig is None:
-                remapObsSubtask = None
-                refTitleLabel = None
-                refFieldName = None
-                outFileLabel = None
-                diffTitleLabel = 'Model - Observations'
+
+                refTitleLabel = 'State Estimate (SOSE)'
+
+                observationsDirectory = build_obs_path(
+                    config, 'ocean', 'soseSubdirectory')
+
+                obsFileName = '{}/SOSE_2005-2010_monthly_{}_{}.nc'.format(
+                    observationsDirectory, field['obsFilePrefix'], fileSuffix)
+                refFieldName = field['obsFieldName']
+                outFileLabel = '{}SOSE'.format(fieldPrefix)
+                galleryName = 'State Estimate: SOSE'
+                diffTitleLabel = 'Model - State Estimate'
+
+                remapObsSubtask = RemapSoseClimatology(
+                    parentTask=self, seasons=seasons, fileName=obsFileName,
+                    outFilePrefix='{}SOSE'.format(refFieldName),
+                    fieldName=refFieldName,
+                    botFieldName=field['obsBotFieldName'],
+                    depths=fieldDepths,
+                    comparisonGridNames=comparisonGridNames,
+                    subtaskName='remapObservations{}'.format(
+                        upperFieldPrefix))
+
+                self.add_subtask(remapObsSubtask)
 
             else:
                 remapObsSubtask = None
@@ -158,7 +237,7 @@ class ClimatologyMapTracers(AnalysisTask):
                 refTitleLabel = galleryName
 
                 refFieldName = field['mpas']
-                outFileLabel = '{}Tracers'.format(fieldPrefix)
+                outFileLabel = '{}SOSE'.format(fieldPrefix)
                 diffTitleLabel = 'Main - Control'
 
             if field['3D']:
@@ -187,7 +266,7 @@ class ClimatologyMapTracers(AnalysisTask):
                             depth=depth,
                             subtaskName=subtaskName)
 
-                        configSectionName = 'ClimatologyMapTracers{}'.format(
+                        configSectionName = 'climatologyMapTracers{}'.format(
                                 upperFieldPrefix)
 
                         # if available, use a separate color map for shallow
@@ -218,3 +297,50 @@ class ClimatologyMapTracers(AnalysisTask):
                             configSectionName=configSectionName)
 
                         self.add_subtask(subtask)
+
+
+class RemapMpasVelMagClimatology(RemapDepthSlicesSubtask):
+    """
+    A subtask for computing climatologies of velocity magnitude from zonal
+    and meridional components
+    """
+    # Authors
+    # -------
+    # Xylar Asay-Davis
+
+    def customize_masked_climatology(self, climatology, season):
+        """
+        Construct velocity magnitude as part of the climatology
+
+        Parameters
+        ----------
+        climatology : ``xarray.Dataset`` object
+            the climatology data set
+
+        season : str
+            The name of the season to be masked
+
+        Returns
+        -------
+        climatology : ``xarray.Dataset`` object
+            the modified climatology data set
+        """
+        # Authors
+        # -------
+        # Xylar Asay-Davis
+
+        # first, call the base class's version of this function so we extract
+        # the desired slices.
+        climatology = super(RemapMpasVelMagClimatology,
+                            self).customize_masked_climatology(climatology,
+                                                               season)
+
+        if 'timeMonthly_avg_velocityZonal' in climatology and \
+                'timeMonthly_avg_velocityMeridional' in climatology:
+            zonalVel = climatology.timeMonthly_avg_velocityZonal
+            meridVel = climatology.timeMonthly_avg_velocityMeridional
+            climatology['velMag'] = numpy.sqrt(zonalVel**2 + meridVel**2)
+            climatology.velMag.attrs['units'] = 'm s$^{-1}$'
+            climatology.velMag.attrs['description'] = 'velocity magnitude'
+
+        return climatology
