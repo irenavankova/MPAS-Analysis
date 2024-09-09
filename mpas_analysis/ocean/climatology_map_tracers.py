@@ -207,11 +207,11 @@ class ClimatologyMapTracers(AnalysisTask):
             if controlConfig is None:
                 remapObsSubtask = None
                 galleryName = None
-                refTitleLabel = None
+                refTitleLabel = 'None'
 
                 refFieldName = None
-                outFileLabel = None
-                diffTitleLabel = None
+                outFileLabel = 'None'
+                diffTitleLabel = 'None'
             else:
                 remapObsSubtask = None
                 controlRunName = controlConfig.get('runs', 'mainRunName')
