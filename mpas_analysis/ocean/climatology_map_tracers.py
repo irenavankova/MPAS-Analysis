@@ -204,32 +204,13 @@ class ClimatologyMapTracers(AnalysisTask):
             else:
                 fieldDepths = None
 
-            if controlConfig is None:
+            if control_config is None:
+                remapObsSubtask = None
+                refTitleLabel = None
 
-                refTitleLabel = 'State Estimate (SOSE)'
-
-                observationsDirectory = build_obs_path(
-                    config, 'ocean', 'soseSubdirectory')
-
-                obsFileName = '{}/SOSE_2005-2010_monthly_{}_{}.nc'.format(
-                    observationsDirectory, field['obsFilePrefix'], fileSuffix)
-                refFieldName = field['obsFieldName']
-                outFileLabel = '{}SOSE'.format(fieldPrefix)
-                galleryName = 'State Estimate: SOSE'
-                diffTitleLabel = 'Model - State Estimate'
-
-                remapObsSubtask = RemapSoseClimatology(
-                    parentTask=self, seasons=seasons, fileName=obsFileName,
-                    outFilePrefix='{}SOSE'.format(refFieldName),
-                    fieldName=refFieldName,
-                    botFieldName=field['obsBotFieldName'],
-                    depths=fieldDepths,
-                    comparisonGridNames=comparisonGridNames,
-                    subtaskName='remapObservations{}'.format(
-                        upperFieldPrefix))
-
-                self.add_subtask(remapObsSubtask)
-
+                refFieldName = None
+                outFileLabel = None
+                diffTitleLabel = None
             else:
                 remapObsSubtask = None
                 controlRunName = controlConfig.get('runs', 'mainRunName')
