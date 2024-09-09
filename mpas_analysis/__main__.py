@@ -171,6 +171,8 @@ def build_analysis_list(config, controlConfig):
     analyses.append(ocean.ClimatologyMapBGC(config,
                                             oceanClimatologyTasks['avg'],
                                             controlConfig))
+    analyses.append(ocean.ClimatologyMapTracers(
+        config, oceanClimatologyTasks['avg'], controlConfig))
 
     analyses.append(ocean.ClimatologyMapArgoTemperature(
         config, oceanClimatologyTasks['avg'], controlConfig))

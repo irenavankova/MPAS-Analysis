@@ -19,6 +19,9 @@ from mpas_analysis.ocean.climatology_map_sose import \
 from mpas_analysis.ocean.climatology_map_woa import \
     ClimatologyMapWoa
 
+from mpas_analysis.ocean.climatology_map_tracers import \
+    ClimatologyMapTracers
+
 from mpas_analysis.ocean.climatology_map_schmidtko import \
     ClimatologyMapSchmidtko
 
