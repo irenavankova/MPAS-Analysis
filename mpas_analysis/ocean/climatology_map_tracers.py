@@ -75,7 +75,15 @@ class ClimatologyMapTracers(AnalysisTask):
               '3D': True,
               'obsFilePrefix': 'clifw',
               'obsFieldName': 'clifw',
-              'obsBotFieldName': 'botClifw'}]
+              'obsBotFieldName': 'botClifw'},
+             {'prefix': 'csrfw',
+              'mpas': 'timeMonthly_avg_freshwaterTracers_subglacialRunoffFreshWaterConcentration',
+              'units': r'',
+              'titleName': 'SRFW Concentration',
+              '3D': True,
+              'obsFilePrefix': 'csrfw',
+              'obsFieldName': 'csrfw',
+              'obsBotFieldName': 'botCsrfw'}]
 
         tags = ['climatology', 'horizontalMap', 'sose', 'publicObs',
                 'antarctic'] + [field['prefix'] for field in fields]
