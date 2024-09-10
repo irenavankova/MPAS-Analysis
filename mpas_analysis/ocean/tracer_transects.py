@@ -98,9 +98,29 @@ class TracerTransects(AnalysisTask):
         fieldList = config.getexpression(sectionName, 'fieldList')
         fields = [field for field in fields if field['prefix'] in fieldList]
 
-        computeTransectsSubtask = None
+        variableList = [field['mpas'] for field in fields
+                        if field['mpas'] != 'velMag']
+
+        transectCollectionName = 'SOSE_transects'
+        if horizontalResolution not in ['obs', 'mpas']:
+            transectCollectionName = '{}_{}km'.format(transectCollectionName,
+                                                      horizontalResolution)
+
+        transectsObservations = None
+
+        computeTransectsSubtask = ComputeTransectsWithVelMag(
+            mpasClimatologyTask=mpasClimatologyTask,
+            parentTask=self,
+            climatologyName='SOSE_transects',
+            transectCollectionName=transectCollectionName,
+            variableList=variableList,
+            seasons=seasons,
+            obsDatasets=transectsObservations,
+            verticalComparisonGridName=verticalComparisonGridName,
+            verticalComparisonGrid=verticalComparisonGrid)
 
         plotObs = controlConfig is None
+
         if plotObs:
 
             refTitleLabel = 'State Estimate (SOSE)'
