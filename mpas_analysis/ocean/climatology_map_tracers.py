@@ -209,9 +209,11 @@ class ClimatologyMapTracers(AnalysisTask):
                 galleryName = None
                 refTitleLabel = 'None'
 
-                refFieldName = None
-                outFileLabel = 'None'
+                #refFieldName = None
+                #outFileLabel = 'None'
                 diffTitleLabel = 'None'
+                refFieldName = field['mpas']
+                outFileLabel = '{}'.format(fieldPrefix)
             else:
                 remapObsSubtask = None
                 controlRunName = controlConfig.get('runs', 'mainRunName')
