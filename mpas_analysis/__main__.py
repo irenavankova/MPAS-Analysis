@@ -234,6 +234,9 @@ def build_analysis_list(config, controlConfig):
                                            oceanClimatologyTasks['avg'],
                                            controlConfig))
 
+    analyses.append(ocean.TracerTransects(config, oceanClimatologyTasks['avg'],
+                                        controlConfig))
+
     oceanRegionalProfiles = ocean.OceanRegionalProfiles(
         config, oceanRegionMasksTask, controlConfig)
     analyses.append(oceanRegionalProfiles)

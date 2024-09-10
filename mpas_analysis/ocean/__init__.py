@@ -58,6 +58,7 @@ from mpas_analysis.ocean.regional_ts_diagrams import \
 from mpas_analysis.ocean.woce_transects import WoceTransects
 from mpas_analysis.ocean.sose_transects import SoseTransects
 from mpas_analysis.ocean.geojson_transects import GeojsonTransects
+from mpas_analysis.ocean.tracer_transects import TracerTransects
 
 from mpas_analysis.ocean.ocean_regional_profiles import \
     OceanRegionalProfiles
