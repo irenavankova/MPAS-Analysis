@@ -121,9 +121,8 @@ class TracerTransects(AnalysisTask):
             verticalComparisonGridName=verticalComparisonGridName,
             verticalComparisonGrid=verticalComparisonGrid)
 
-        #plotObs = controlConfig is None
-        plotObs = False
-        
+        plotObs = controlConfig is None
+
         if plotObs:
 
             refTitleLabel = 'State Estimate (SOSE)'
