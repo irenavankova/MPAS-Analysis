@@ -106,7 +106,9 @@ class TracerTransects(AnalysisTask):
             transectCollectionName = '{}_{}km'.format(transectCollectionName,
                                                       horizontalResolution)
 
-        transectsObservations = None
+        transectsObservations = SoseTransectsObservations(
+            config, horizontalResolution,
+            transectCollectionName, fields)
 
         computeTransectsSubtask = ComputeTransectsWithVelMag(
             mpasClimatologyTask=mpasClimatologyTask,
@@ -119,8 +121,9 @@ class TracerTransects(AnalysisTask):
             verticalComparisonGridName=verticalComparisonGridName,
             verticalComparisonGrid=verticalComparisonGrid)
 
-        plotObs = controlConfig is None
-
+        #plotObs = controlConfig is None
+        plotObs = False
+        
         if plotObs:
 
             refTitleLabel = 'State Estimate (SOSE)'
