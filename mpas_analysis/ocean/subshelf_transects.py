@@ -87,6 +87,7 @@ class SubshelfTransects(AnalysisTask):
              'subshelf-PIG-East': 'subshelf-PIG-East.nc',
              'subshelf-PIG-West': 'subshelf-PIG-West.nc',
              'subshelf-PIG-Center': 'subshelf-PIG-Center.nc',
+             'subshelf-PIG-Center-Long': 'subshelf-PIG-Center-Long.nc',
              'subshelf-PIG-South': 'subshelf-PIG-South.nc',
              'subshelf-Thwaites-East': 'subshelf-Thwaites-East.nc',
              'subshelf-Thwaites-Center': 'subshelf-Thwaites-Center.nc',
