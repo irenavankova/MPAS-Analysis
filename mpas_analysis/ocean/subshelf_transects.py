@@ -157,12 +157,7 @@ class SubshelfTransects(AnalysisTask):
                  {'mpas': 'timeMonthly_avg_velocityMeridional',
                   'obs': 'velocityMeridional',
                   'titleName': 'Meridional Velocity',
-                  'units': r'm s$^{-1}$'},
-             'potentialDensityContour':
-                 {'mpas': 'timeMonthly_avg_potentialDensity',
-                  'obs': 'potentialDensity',
-                  'titleName': 'Potential Density Contours',
-                  'units': r'kg m$^{-3}$'}}
+                  'units': r'm s$^{-1}$'}}
 
         transectCollectionName = 'Subshelf_transects'
         if horizontalResolution not in ['obs', 'mpas']:
