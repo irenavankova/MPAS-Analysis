@@ -158,7 +158,12 @@ class SubshelfTransects(AnalysisTask):
                  {'mpas': 'timeMonthly_avg_velocityMeridional',
                   'obs': 'velocityMeridional',
                   'titleName': 'Meridional Velocity',
-                  'units': r'm s$^{-1}$'}}
+                  'units': r'm s$^{-1}$'},
+             'verticalViscosity':
+                 {'mpas': 'timeMonthly_avg_vertViscTopOfCell',
+                  'obs': 'verticalViscosity',
+                  'titleName': 'Vertical Viscosity',
+                  'units': r'm$^{2}$ s$^{-1}$'}}
 
         transectCollectionName = 'Subshelf_transects'
         if horizontalResolution not in ['obs', 'mpas']:
@@ -198,6 +203,7 @@ class SubshelfTransects(AnalysisTask):
                          'potentialDensity': 'potentialDensityTransect',
                          'zonalVelocity': 'zonalVelocityTransect',
                          'meridionalVelocity': 'meridionalVelocityTransect',
+                         'verticalViscosity': 'verticalViscosityTransect',
                          'potentialDensityContour':
                              'potentialDensityContourTransect'}
 
