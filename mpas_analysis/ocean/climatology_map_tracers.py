@@ -83,7 +83,15 @@ class ClimatologyMapTracers(AnalysisTask):
               '3D': True,
               'obsFilePrefix': 'csrfw',
               'obsFieldName': 'csrfw',
-              'obsBotFieldName': 'botCsrfw'}]
+              'obsBotFieldName': 'botCsrfw'},
+             {'prefix': 'bld',
+              'mpas': 'timeMonthly_avg_boundaryLayerDepth',
+              'units': r'm',
+              'titleName': 'BL Depth',
+              '3D': False,
+              'obsFilePrefix': 'bld',
+              'obsFieldName': 'bld',
+              'obsBotFieldName': 'botBld'}]
 
         tags = ['climatology', 'horizontalMap', 'sose', 'publicObs',
                 'antarctic'] + [field['prefix'] for field in fields]
