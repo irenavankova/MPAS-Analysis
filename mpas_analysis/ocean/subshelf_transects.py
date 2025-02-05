@@ -138,32 +138,38 @@ class SubshelfTransects(AnalysisTask):
                 {'mpas': 'timeMonthly_avg_activeTracers_temperature',
                  'obs': 'potentialTemperature',
                  'titleName': 'Potential Temperature',
-                 'units': r'$\degree$C'},
+                 'units': r'$\degree$C',
+                 'VertGrid': 'nVertLevels'},
              'salinity':
                 {'mpas': 'timeMonthly_avg_activeTracers_salinity',
                  'obs': 'salinity',
                  'titleName': 'Salinity',
-                 'units': r'PSU'},
+                 'units': r'PSU',
+                 'VertGrid': 'nVertLevels'},
              'potentialDensity':
                 {'mpas': 'timeMonthly_avg_potentialDensity',
                  'obs': 'potentialDensity',
                  'titleName': 'Potential Density',
-                 'units': r'kg m$^{-3}$'},
+                 'units': r'kg m$^{-3}$',
+                 'VertGrid': 'nVertLevels'},
              'zonalVelocity':
                  {'mpas': 'timeMonthly_avg_velocityZonal',
                   'obs': 'velocityZonal',
                   'titleName': 'Zonal Velocity',
-                  'units': r'm s$^{-1}$'},
+                  'units': r'm s$^{-1}$',
+                 'VertGrid': 'nVertLevels'},
              'meridionalVelocity':
                  {'mpas': 'timeMonthly_avg_velocityMeridional',
                   'obs': 'velocityMeridional',
                   'titleName': 'Meridional Velocity',
-                  'units': r'm s$^{-1}$'},
+                  'units': r'm s$^{-1}$',
+                 'VertGrid': 'nVertLevels'},
              'verticalViscosity':
                  {'mpas': 'timeMonthly_avg_vertViscTopOfCell',
                   'obs': 'verticalViscosity',
                   'titleName': 'Vertical Viscosity',
-                  'units': r'm$^{2}$ s$^{-1}$'}}
+                  'units': r'm$^{2}$ s$^{-1}$',
+                  'VertGrid': 'nVertLevelsP1'}}
 
         transectCollectionName = 'Subshelf_transects'
         if horizontalResolution not in ['obs', 'mpas']:
@@ -183,7 +189,8 @@ class SubshelfTransects(AnalysisTask):
             seasons=seasons,
             obsDatasets=transectsObservations,
             verticalComparisonGridName=verticalComparisonGridName,
-            verticalComparisonGrid=verticalComparisonGrid)
+            verticalComparisonGrid=verticalComparisonGrid,
+            vertDim=[field['VertGrid'] for field in fields.values()])
 
         plotObs = controlConfig is None
         if plotObs:
