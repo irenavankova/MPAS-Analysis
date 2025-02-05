@@ -157,13 +157,13 @@ class SubshelfTransects(AnalysisTask):
                   'obs': 'velocityZonal',
                   'titleName': 'Zonal Velocity',
                   'units': r'm s$^{-1}$',
-                 'VertGrid': 'nVertLevels'},
+                  'VertGrid': 'nVertLevels'},
              'meridionalVelocity':
                  {'mpas': 'timeMonthly_avg_velocityMeridional',
                   'obs': 'velocityMeridional',
                   'titleName': 'Meridional Velocity',
                   'units': r'm s$^{-1}$',
-                 'VertGrid': 'nVertLevels'},
+                  'VertGrid': 'nVertLevels'},
              'verticalViscosity':
                  {'mpas': 'timeMonthly_avg_vertViscTopOfCell',
                   'obs': 'verticalViscosity',
