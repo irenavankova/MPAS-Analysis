@@ -165,8 +165,7 @@ class ComputeTransectsSubtask(RemapMpasClimatologySubtask):
         self.maxLevelCell = None
         self.zCoord = None
         if vertDim not in ['nVertLevels', 'nVertLevelsP1']:
-            raise ValueError('vertDim should be either "nVertLevels" or '
-                             '"nVertLevelsP1"')
+            raise ValueError(f'vertDim should be either "nVertLevels" or "nVertLevelsP1" but it is {vertDim}')
         self.vertDim = vertDim
         self.remap = self.obsDatasets.horizontalResolution != 'mpas'
         if self.obsDatasets.horizontalResolution == 'mpas' and \
