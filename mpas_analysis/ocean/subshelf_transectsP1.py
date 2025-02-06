@@ -19,7 +19,7 @@ from mpas_analysis.shared.io.utility import build_obs_path
 from collections import OrderedDict
 
 
-class SubshelfTransects(AnalysisTask):
+class SubshelfTransectsP1(AnalysisTask):
     """
     Plot model output and compare it against other outputs of Antarctic subshelf transects
     """
@@ -51,8 +51,8 @@ class SubshelfTransects(AnalysisTask):
         tags = ['transect', 'antarctic', 'publicObs']
 
         # call the constructor from the base class (AnalysisTask)
-        super(SubshelfTransects, self).__init__(
-            config=config, taskName='subshelfTransects',
+        super(SubshelfTransectsP1, self).__init__(
+            config=config, taskName='subshelfTransectsP1',
             componentName='ocean',
             tags=tags)
 
@@ -134,31 +134,11 @@ class SubshelfTransects(AnalysisTask):
             obsFileNames[transectName] = fileName
 
         fields = \
-            {'temperature':
-                {'mpas': 'timeMonthly_avg_activeTracers_temperature',
-                 'obs': 'potentialTemperature',
-                 'titleName': 'Potential Temperature',
-                 'units': r'$\degree$C'},
-             'salinity':
-                {'mpas': 'timeMonthly_avg_activeTracers_salinity',
-                 'obs': 'salinity',
-                 'titleName': 'Salinity',
-                 'units': r'PSU'},
-             'potentialDensity':
-                {'mpas': 'timeMonthly_avg_potentialDensity',
-                 'obs': 'potentialDensity',
-                 'titleName': 'Potential Density',
-                 'units': r'kg m$^{-3}$'},
-             'zonalVelocity':
-                 {'mpas': 'timeMonthly_avg_velocityZonal',
-                  'obs': 'velocityZonal',
-                  'titleName': 'Zonal Velocity',
-                  'units': r'm s$^{-1}$'},
-             'meridionalVelocity':
-                 {'mpas': 'timeMonthly_avg_velocityMeridional',
-                  'obs': 'velocityMeridional',
-                  'titleName': 'Meridional Velocity',
-                  'units': r'm s$^{-1}$'}}
+            {'verticalViscosity':
+                 {'mpas': 'timeMonthly_avg_vertViscTopOfCell',
+                  'obs': 'verticalViscosity',
+                  'titleName': 'Vertical Viscosity',
+                  'units': r'm$^{2}$ s$^{-1}$'}}
 
         transectCollectionName = 'Subshelf_transects'
         if horizontalResolution not in ['obs', 'mpas']:
@@ -179,7 +159,7 @@ class SubshelfTransects(AnalysisTask):
             obsDatasets=transectsObservations,
             verticalComparisonGridName=verticalComparisonGridName,
             verticalComparisonGrid=verticalComparisonGrid,
-            vertDim='nVertLevels')
+            vertDim='nVertLevelsP1')
 
         plotObs = controlConfig is None
         if plotObs:
@@ -194,13 +174,7 @@ class SubshelfTransects(AnalysisTask):
 
             diffTitleLabel = 'Main - Control'
 
-        fieldNameDict = {'temperature': 'temperatureTransect',
-                         'salinity': 'salinityTransect',
-                         'potentialDensity': 'potentialDensityTransect',
-                         'zonalVelocity': 'zonalVelocityTransect',
-                         'meridionalVelocity': 'meridionalVelocityTransect',
-                         'potentialDensityContour':
-                             'potentialDensityContourTransect'}
+        fieldNameDict = {'verticalViscosity': 'verticalViscosityTransect'}
 
         for fieldName in fields:
             for transectName in obsFileNames:
