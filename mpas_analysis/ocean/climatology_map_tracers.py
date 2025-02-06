@@ -182,13 +182,14 @@ class ClimatologyMapTracers(AnalysisTask):
             sectionName, 'shallowVsDeepColormapDepth')
 
         shallow = []
-        for depth in depths:
-            if depth == 'top':
-                shallow.append(True)
-            elif depth == 'bot':
-                shallow.append(False)
-            else:
-                shallow.append(depth >= shallowVsDeepColormapDepth)
+        if depths is not None:
+            for depth in depths:
+                if depth == 'top':
+                    shallow.append(True)
+                elif depth == 'bot':
+                    shallow.append(False)
+                else:
+                    shallow.append(depth >= shallowVsDeepColormapDepth)
 
         if depths is None:
             remapMpasSubtask = RemapMpasClimatologySubtask(
