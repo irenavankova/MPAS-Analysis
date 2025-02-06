@@ -323,7 +323,7 @@ class ComputeTransectsSubtask(RemapMpasClimatologySubtask):
 
         zIndex = xr.DataArray.from_dict(
             {'dims': (vertDim,),
-             'data': numpy.arange(climatology.sizes['vertDim'])})
+             'data': numpy.arange(climatology.sizes[vertDim])})
 
         cellMask = zIndex <= self.maxLevelCell
 
