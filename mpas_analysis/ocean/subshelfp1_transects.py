@@ -19,7 +19,7 @@ from mpas_analysis.shared.io.utility import build_obs_path
 from collections import OrderedDict
 
 
-class SubshelfTransectsP1(AnalysisTask):
+class Subshelfp1Transects(AnalysisTask):
     """
     Plot model output and compare it against other outputs of Antarctic subshelf transects
     """
@@ -51,8 +51,8 @@ class SubshelfTransectsP1(AnalysisTask):
         tags = ['transect', 'antarctic', 'publicObs']
 
         # call the constructor from the base class (AnalysisTask)
-        super(SubshelfTransectsP1, self).__init__(
-            config=config, taskName='subshelfTransectsP1',
+        super(Subshelfp1Transects, self).__init__(
+            config=config, taskName='subshelfp1Transects',
             componentName='ocean',
             tags=tags)
 
@@ -140,7 +140,7 @@ class SubshelfTransectsP1(AnalysisTask):
                   'titleName': 'Vertical Viscosity',
                   'units': r'm$^{2}$ s$^{-1}$'}}
 
-        transectCollectionName = 'Subshelf_transects'
+        transectCollectionName = 'Subshelfp1_transects'
         if horizontalResolution not in ['obs', 'mpas']:
             transectCollectionName = \
                 f'{transectCollectionName}_{horizontalResolution}km'
@@ -152,7 +152,7 @@ class SubshelfTransectsP1(AnalysisTask):
         computeTransectsSubtask = ComputeTransectsSubtask(
             mpasClimatologyTask=mpasClimatologyTask,
             parentTask=self,
-            climatologyName='Subshelf',
+            climatologyName='Subshelfp1',
             transectCollectionName=transectCollectionName,
             variableList=[field['mpas'] for field in fields.values()],
             seasons=seasons,
@@ -205,11 +205,11 @@ class SubshelfTransectsP1(AnalysisTask):
                         diffTitleLabel=diffTitleLabel,
                         unitsLabel=fields[fieldName]['units'],
                         imageCaption=f'{fieldNameInTitle} {season}',
-                        galleryGroup='Antarctic Subshelf Transects',
+                        galleryGroup='Antarctic Subshelf P1 Transects',
                         groupSubtitle=None,
-                        groupLink='subshelf',
+                        groupLink='subshelfp1',
                         galleryName=titleName,
-                        configSectionName=f'subshelf{fieldNameUpper}Transects',
+                        configSectionName=f'subshelfp1{fieldNameUpper}Transects',
                         verticalBounds=verticalBounds)
 
                     self.add_subtask(subtask)

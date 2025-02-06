@@ -236,7 +236,7 @@ def build_analysis_list(config, controlConfig):
     analyses.append(ocean.SubshelfTransects(config, oceanClimatologyTasks['avg'],
                                            controlConfig))
 
-    analyses.append(ocean.SubshelfTransectsP1(config, oceanClimatologyTasks['avg'],
+    analyses.append(ocean.Subshelfp1Transects(config, oceanClimatologyTasks['avg'],
                                            controlConfig))
 
     analyses.append(ocean.SoseTransects(config, oceanClimatologyTasks['avg'],

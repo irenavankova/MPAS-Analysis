@@ -56,7 +56,7 @@ from mpas_analysis.ocean.woce_transects import WoceTransects
 from mpas_analysis.ocean.antship_transects import AntshipTransects
 from mpas_analysis.ocean.osnap_transects import OsnapTransects
 from mpas_analysis.ocean.subshelf_transects import SubshelfTransects
-from mpas_analysis.ocean.subshelf_transectsP1 import SubshelfTransectsP1
+from mpas_analysis.ocean.subshelfp1_transects import Subshelfp1Transects
 from mpas_analysis.ocean.sose_transects import SoseTransects
 from mpas_analysis.ocean.woa_transects import WoaTransects
 from mpas_analysis.ocean.geojson_transects import GeojsonTransects
