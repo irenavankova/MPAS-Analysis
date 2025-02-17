@@ -26,7 +26,7 @@ Analysis Tasks
 
    tasks/antshipTransects
    tasks/conservation
-   tasks/geojsonTransects
+   tasks/geojsonNetcdfTransects
    tasks/hovmollerOceanRegions
    tasks/indexNino34
    tasks/meridionalHeatTransport
