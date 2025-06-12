@@ -253,6 +253,7 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         derivedVars = []
         self._add_vel_mag(climatology, derivedVars)
         self._add_thermal_forcing(climatology, derivedVars)
+        self._add_temp_depth_ave(climatology, derivedVars)
 
         # then, call the superclass's version of this function so we extract
         # the desired slices (but before renaming because it expects the
@@ -324,3 +325,18 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         tempFreeze = c0 + cs*salin + cp*press + cps*press*salin
 
         climatology[varName] = temp - tempFreeze
+
+    def _add_temp_depth_ave(self, climatology, derivedVars):
+        """
+        Add thermal forcing to the climatology if requested
+        """
+        varName = 'tempDepthAverage'
+        if varName not in self.variables:
+            return
+
+        derivedVars.append(varName)
+
+        temp = climatology.timeMonthly_avg_activeTracers_temperature
+        layerThick = climatology.timeMonthly_avg_layerThickness
+
+        climatology[varName] = (temp * layerThick).sum(dim='nVertLevels') / layerThick.cumsum(dim='nVertLevels')
