@@ -339,4 +339,4 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         temp = climatology.timeMonthly_avg_activeTracers_temperature
         layerThick = climatology.timeMonthly_avg_layerThickness
 
-        climatology[varName] = (temp * layerThick).sum(dim='nVertLevels') / layerThick.sum(dim='nVertLevels')
+        climatology[varName] = (temp * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(dim='nVertLevels', skipna=True)
