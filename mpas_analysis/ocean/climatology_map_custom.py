@@ -254,6 +254,8 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         self._add_vel_mag(climatology, derivedVars)
         self._add_thermal_forcing(climatology, derivedVars)
         self._add_temp_depth_ave(climatology, derivedVars)
+        self._add_vel_mag_depth_ave(climatology, derivedVars)
+
 
         # then, call the superclass's version of this function so we extract
         # the desired slices (but before renaming because it expects the
@@ -340,3 +342,23 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         layerThick = climatology.timeMonthly_avg_layerThickness
 
         climatology[varName] = (temp * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(dim='nVertLevels', skipna=True)
+
+    def _add_vel_mag_depth_ave(self, climatology, derivedVars):
+        """
+        Add the velocity magnitude to the climatology if requested
+        """
+        varName = 'speedDepthAverage'
+        if varName not in self.variables:
+            return
+
+        derivedVars.append(varName)
+
+        layerThick = climatology.timeMonthly_avg_layerThickness
+
+        zonalVel = climatology.timeMonthly_avg_velocityZonal
+        zonalVelDave = (zonalVel * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(dim='nVertLevels', skipna=True)
+
+        meridVel = climatology.timeMonthly_avg_velocityMeridional
+        meridVelDave = (meridVel * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(dim='nVertLevels', skipna=True)
+
+        climatology[varName] = np.sqrt(zonalVelDave**2 + meridVelDave**2)
