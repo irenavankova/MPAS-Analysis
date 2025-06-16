@@ -255,6 +255,9 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         self._add_thermal_forcing(climatology, derivedVars)
         self._add_temp_depth_ave(climatology, derivedVars)
         self._add_vel_mag_depth_ave(climatology, derivedVars)
+        self._add_dens_depth_ave(climatology, derivedVars)
+        self._add_temp_upper32(climatology, derivedVars)
+        self._add_vel_mag_upper32(climatology, derivedVars)
 
 
         # then, call the superclass's version of this function so we extract
@@ -362,3 +365,63 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         meridVelDave = (meridVel * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(dim='nVertLevels', skipna=True)
 
         climatology[varName] = np.sqrt(zonalVelDave**2 + meridVelDave**2)
+
+    def _add_dens_depth_ave(self, climatology, derivedVars):
+        """
+        Add thermal forcing to the climatology if requested
+        """
+        varName = 'densDepthAverage'
+        if varName not in self.variables:
+            return
+
+        derivedVars.append(varName)
+
+        dens = climatology.timeMonthly_avg_density
+        layerThick = climatology.timeMonthly_avg_layerThickness
+
+        climatology[varName] = (dens * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(
+            dim='nVertLevels', skipna=True)
+
+    def _add_temp_upper32(self, climatology, derivedVars):
+        """
+        Add thermal forcing to the climatology if requested
+        """
+        varName = 'tempUpper32'
+        if varName not in self.variables:
+            return
+
+        derivedVars.append(varName)
+
+        temp = climatology.timeMonthly_avg_activeTracers_temperature
+        temp = temp.isel(nVertLevels=slice(0, 32))
+        layerThick = climatology.timeMonthly_avg_layerThickness
+        layerThick = layerThick.isel(nVertLevels=slice(0, 32))
+
+        climatology[varName] = (temp * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(
+            dim='nVertLevels', skipna=True)
+
+    def _add_vel_mag_upper32(self, climatology, derivedVars):
+        """
+        Add the velocity magnitude to the climatology if requested
+        """
+        varName = 'speedUpper32'
+        if varName not in self.variables:
+            return
+
+        derivedVars.append(varName)
+
+        layerThick = climatology.timeMonthly_avg_layerThickness
+        layerThick = layerThick.isel(nVertLevels=slice(0, 32))
+
+        zonalVel = climatology.timeMonthly_avg_velocityZonal
+        zonalVel = zonalVel.isel(nVertLevels=slice(0, 32))
+        zonalVelDave = (zonalVel * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(
+            dim='nVertLevels', skipna=True)
+
+        meridVel = climatology.timeMonthly_avg_velocityMeridional
+        meridVel = meridVel.isel(nVertLevels=slice(0, 32))
+        meridVelDave = (meridVel * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(
+            dim='nVertLevels', skipna=True)
+
+        climatology[varName] = np.sqrt(zonalVelDave ** 2 + meridVelDave ** 2)
+
