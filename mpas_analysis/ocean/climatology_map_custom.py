@@ -376,7 +376,7 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
 
         derivedVars.append(varName)
 
-        dens = climatology.timeMonthly_avg_density
+        dens = climatology.timeMonthly_avg_potentialDensity
         layerThick = climatology.timeMonthly_avg_layerThickness
 
         climatology[varName] = (dens * layerThick).sum(dim='nVertLevels', skipna=True) / layerThick.sum(
