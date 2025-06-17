@@ -258,7 +258,7 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
         self._add_dens_depth_ave(climatology, derivedVars)
         self._add_temp_upper32(climatology, derivedVars)
         self._add_vel_mag_upper32(climatology, derivedVars)
-
+        self._add_ut(climatology, derivedVars)
 
         # then, call the superclass's version of this function so we extract
         # the desired slices (but before renaming because it expects the
@@ -424,4 +424,21 @@ class RemapMpasDerivedVariableClimatology(RemapDepthSlicesSubtask):
             dim='nVertLevels', skipna=True)
 
         climatology[varName] = np.sqrt(zonalVelDave ** 2 + meridVelDave ** 2)
+
+    def _add_ut(self, climatology, derivedVars):
+        """
+        Add the velocity magnitude to the climatology if requested
+        """
+        varName = 'ut'
+        if varName not in self.variables:
+            return
+
+        derivedVars.append(varName)
+
+        zonalVel = climatology.timeMonthly_avg_velocityZonal
+        meridVel = climatology.timeMonthly_avg_velocityMeridional
+        temp = climatology.timeMonthly_avg_activeTracers_temperature
+
+        climatology[varName] = np.sqrt(zonalVel**2 + meridVel**2) * temp
+
 
